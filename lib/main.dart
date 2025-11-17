@@ -292,11 +292,34 @@ class HomeScreen extends StatelessWidget {
             // Footer
             Container(
                 width: double.infinity,
-                color: Colors.grey[50],
+                color: const Color.fromARGB(255, 219, 219, 219),
                 padding: const EdgeInsets.all(24),
                 child: const Column(
                   children: <Widget>[
-                    
+                    Text(
+                      'Open hours',
+                      style: footHeader1,
+                    ),
+                    Text(
+                      'Term time',
+                      style: footHeader2,
+                    ),
+                    Text(
+                      'Monday-Friday(07:30-19:00)',
+                      style: footNormal,
+                    ),
+                    Text(
+                      'Out of term or reading week',
+                      style: footHeader2,
+                    ),
+                    Text(
+                      'Monday-Thursday(09:00-15:00)',
+                      style: footNormal,
+                    ),
+                    Text(
+                      '24/7 in store',
+                      style: footNormal,
+                    ),
                   ],
                 )),
           ],
