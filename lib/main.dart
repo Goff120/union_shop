@@ -303,10 +303,12 @@ class HomeScreen extends StatelessWidget {
                     'Open hours',
                     style: footHeader1,
                     ),
+                    const SizedBox(height: 4),
                   const Text(
                     'Term time',
                     style: footHeader2,
                     ),
+                    const SizedBox(height: 4),
                   const Text(
                     'Monday-Friday(07:30-19:00)',
                     style: footNormal,
@@ -315,15 +317,17 @@ class HomeScreen extends StatelessWidget {
                     'Out of term or reading week',
                     style: footHeader2,
                   ),
+                  const SizedBox(height: 4),
                   const Text(
                     'Monday-Thursday(09:00-15:00)',
                     style: footNormal,
                   ),
+                  const SizedBox(height: 4),
                   const Text(
                     '24/7 in store',
                     style: footNormal,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 32),
                   InkWell(
                     child: const Text(
                     "help me",
