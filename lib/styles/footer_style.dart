@@ -18,5 +18,11 @@ const TextStyle footHeader1 = TextStyle(
   fontWeight: FontWeight.w600,
 );
 
+const TextStyle footerlink = TextStyle(
+  color: Color.fromARGB(255, 62, 130, 255),
+  fontSize: 16,
+  fontWeight: FontWeight.w600,
+);
+
 
 
