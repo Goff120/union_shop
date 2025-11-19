@@ -41,3 +41,5 @@ class Footer extends StatelessWidget {
     );
   }
 }
+
+//see if we need to have good code pratice
