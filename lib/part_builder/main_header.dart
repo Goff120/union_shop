@@ -15,10 +15,23 @@ class MainHeader extends StatelessWidget {
     // This is the event handler for buttons that don't work yet
   }
 
-  void onMenuTap() {
-    
-  }
+    void onMenuTap(BuildContext context) async {
+    final selection = await showMenu<String>(
+      context: context,
+      position: const RelativeRect.fromLTRB(1000, 80, 16, 0), 
+      items: const [
+        PopupMenuItem(value: '/', child: Text('Home')),
+        PopupMenuItem(value: '/shop', child: Text('Shop')),
+        PopupMenuItem(value: '/print-shack', child: Text('The Print Shack')),
+        PopupMenuItem(value: '/sale', child: Text('Sale!')),
+        PopupMenuItem(value: '/about', child: Text('About')),
+      ],
+    );
 
+    if (selection != null) {
+      Navigator.of(context).pushNamed(selection);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -126,7 +139,7 @@ class MainHeader extends StatelessWidget {
                             minWidth: 32,
                             minHeight: 32,
                           ),
-                          onPressed: onMenuTap,
+                          onPressed: () => onMenuTap(context),
                         ),
                       ],
                     ),
