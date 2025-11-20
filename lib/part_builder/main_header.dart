@@ -16,7 +16,7 @@ class MainHeader extends StatelessWidget {
   }
 
   void onMenuTap() {
-    // This is the event handler for buttons that don't work yet
+    
   }
 
   @override
@@ -80,15 +80,6 @@ class MainHeader extends StatelessWidget {
                     const SizedBox(width: 24),
                   ],
 
-                  // 🔵 MOBILE MENU BUTTON
-                  if (isMobile)
-                    IconButton(
-                      icon: const Icon(Icons.menu, size: 24),
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer();
-                    },
-                  ),
-
                   const Spacer(),
 
                   ConstrainedBox(
@@ -126,6 +117,7 @@ class MainHeader extends StatelessWidget {
                           ),
                           onPressed: onBagTap,
                         ),
+                        if (isMobile) 
                         IconButton(
                           icon: const Icon(Icons.menu,
                               size: 18, color: Colors.grey),
