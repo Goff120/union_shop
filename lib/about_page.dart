@@ -25,27 +25,10 @@ class AboutPage extends StatelessWidget {
             Container(
               height: 100,
               color: Colors.white,
-              child: Column(
+              child: const Column(
                 children: [
-                  // Top banner
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    color: const Color(0xFF4d2963),
-                    child: const Text(
-                      'The one peace! The one peace is REAL!!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ),
-                  // Main header
-                  HeaderMain(
-                  onHomeTap: () => navigateToHome(context),
-                  onSearchTap: placeholderCallbackForButtons,
-                  onAccountTap: placeholderCallbackForButtons,
-                  onBagTap: placeholderCallbackForButtons,
-                  onMenuTap: placeholderCallbackForButtons,
-                )
+                  //header
+                  MainHeader()
                 ],
               ),
             ),
