@@ -69,6 +69,28 @@ class MainHeader extends StatelessWidget {
                   ),
 
                   const Spacer(),
+                  
+
+                  // 🔵 DESKTOP NAVIGATION LINKS
+                  if (!isMobile) ...[
+                    _navItem(context, "Home", "/"),
+                    _navItem(context, "Products", "/products"),
+                    _navItem(context, "About", "/about"),
+                    _navItem(context, "Contact", "/contact"),
+                    const SizedBox(width: 24),
+                  ],
+
+                  // 🔵 MOBILE MENU BUTTON
+                  if (isMobile)
+                    IconButton(
+                      icon: const Icon(Icons.menu, size: 24),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                    },
+                  ),
+
+                  const Spacer(),
+
                   ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 600),
                     child: Row(
@@ -117,24 +139,6 @@ class MainHeader extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  // 🔵 DESKTOP NAVIGATION LINKS
-                  if (!isMobile) ...[
-                    _navItem(context, "Home", "/"),
-                    _navItem(context, "Products", "/products"),
-                    _navItem(context, "About", "/about"),
-                    _navItem(context, "Contact", "/contact"),
-                    const SizedBox(width: 24),
-                  ],
-
-                  // 🔵 MOBILE MENU BUTTON
-                  if (isMobile)
-                    IconButton(
-                      icon: const Icon(Icons.menu, size: 24),
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                    ),
                 ],
               ),
             ),
