@@ -8,13 +8,13 @@ const TextStyle genNormal = TextStyle(
 
 const TextStyle genHeader2 = TextStyle(
   color: Color.fromARGB(255, 38, 38, 38),
-  fontSize: 18,
+  fontSize: 21,
   fontWeight: FontWeight.w600,
 );
 
 const TextStyle genHeader1 = TextStyle(
   color: Color.fromARGB(255, 0, 0, 0),
-  fontSize: 20,
+  fontSize: 26,
   fontWeight: FontWeight.w600,
 );
 

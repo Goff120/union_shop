@@ -19,6 +19,7 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Header
             Container(
@@ -49,21 +50,23 @@ class AboutPage extends StatelessWidget {
               ),
             ),
 
+
+            const SizedBox(height: 50),
             const Text("About US", style: genHeader1),
-            const SizedBox(height: 12),
+            const SizedBox(height: 30),
             const Text("We are the UNI of portsmouth student shop give the best UNI products",
             style: genNormal),
-            const SizedBox(height: 6),
+            const SizedBox(height: 15),
             const Text("What we sell!", style: genHeader2),
-            const SizedBox(height: 4),
+            const SizedBox(height: 8),
             const Text("""we give a range of items to merch you can 
-            be proud of or common useful items that can be the foundation of your learning""",
+be proud of or common useful items that can be the foundation of your learning""",
             style: genNormal),
 
-            const SizedBox(height: 8),
+            const SizedBox(height: 20),
             const Text("""we hope you have a great time in our UNI and can have the proper supplys for it""",
             style: genNormal),
-
+            const SizedBox(height: 20),
             // Footer
             const Footer(),
           ],
