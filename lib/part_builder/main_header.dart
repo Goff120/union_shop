@@ -3,6 +3,22 @@ import 'package:flutter/material.dart';
 class MainHeader extends StatelessWidget {
   const MainHeader({super.key});
 
+  void onSearchTap() {
+    // This is the event handler for buttons that don't work yet
+  }
+
+  void onAccountTap() {
+    // This is the event handler for buttons that don't work yet
+  }
+
+  void onBagTap() {
+    // This is the event handler for buttons that don't work yet
+  }
+
+  void onMenuTap() {
+    // This is the event handler for buttons that don't work yet
+  }
+
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -53,6 +69,54 @@ class MainHeader extends StatelessWidget {
                   ),
 
                   const Spacer(),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 600),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.search,
+                              size: 18, color: Colors.grey),
+                          padding: const EdgeInsets.all(8),
+                          constraints: const BoxConstraints(
+                            minWidth: 32,
+                            minHeight: 32,
+                          ),
+                          onPressed: onSearchTap,
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.person_outline,
+                              size: 18, color: Colors.grey),
+                          padding: const EdgeInsets.all(8),
+                          constraints: const BoxConstraints(
+                            minWidth: 32,
+                            minHeight: 32,
+                          ),
+                          onPressed: onAccountTap,
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.shopping_bag_outlined,
+                              size: 18, color: Colors.grey),
+                          padding: const EdgeInsets.all(8),
+                          constraints: const BoxConstraints(
+                            minWidth: 32,
+                            minHeight: 32,
+                          ),
+                          onPressed: onBagTap,
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.menu,
+                              size: 18, color: Colors.grey),
+                          padding: const EdgeInsets.all(8),
+                          constraints: const BoxConstraints(
+                            minWidth: 32,
+                            minHeight: 32,
+                          ),
+                          onPressed: onMenuTap,
+                        ),
+                      ],
+                    ),
+                  ),
 
                   // 🔵 DESKTOP NAVIGATION LINKS
                   if (!isMobile) ...[
