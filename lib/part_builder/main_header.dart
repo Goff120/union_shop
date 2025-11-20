@@ -19,6 +19,7 @@ class HeaderMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
+      
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(

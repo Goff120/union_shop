@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/about_page.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/part_builder/footer.dart';
@@ -23,7 +24,11 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
-      routes: {'/product': (context) => const ProductPage()},
+      routes: {
+        '/product': (context) => const ProductPage(),
+        // About route - create AboutPage widget (e.g. lib/about_page.dart) and import it above
+        '/about': (context) => const AboutPage(),
+      },
     );
   }
 }
