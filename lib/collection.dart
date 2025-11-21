@@ -3,8 +3,8 @@ import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/styles/genral_text.dart';
 
-class AboutPage extends StatelessWidget {
-  const AboutPage({super.key});
+class CollectionPage extends StatelessWidget {
+  const CollectionPage({super.key});
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
