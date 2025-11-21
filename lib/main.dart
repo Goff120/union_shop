@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/portsmouth island.jpeg'),
+                    image: AssetImage('assets/winter sale.webp'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -115,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   const Text(
-                    "We are proud of our island",
+                    "WE have our no cold sale 20% off",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
@@ -171,25 +171,25 @@ class HomeScreen extends StatelessWidget {
                   ProductCard(
                     title: 'Placeholder Product 1',
                     price: '£10.00',
-                    image: "assets/rabbit.png",
+                    image: "assets/jacket.webp",
                   ),
                   ProductCard(
                     title: 'Placeholder Product 2',
                     price: '£15.00',
                     image:
-                        'assets/mr_bean.png',
+                        'jeans.webp',
                   ),
                   ProductCard(
                     title: 'Placeholder Product 3',
                     price: '£20.00',
                     image:
-                        'assets/man.png',
+                        'assets/well_hot_hoodie.jpeg',
                   ),
                   ProductCard(
                     title: 'Placeholder Product 4',
                     price: '£25.00',
                     image:
-                        'assets/gear5.jpeg',
+                        'assets/gloves.webp',
                   ),
                   //all test
                 ],
