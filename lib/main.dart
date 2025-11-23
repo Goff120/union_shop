@@ -169,25 +169,25 @@ class HomeScreen extends StatelessWidget {
                 mainAxisSpacing: 48,
                 children: const [
                   ProductCard(
-                    title: 'Placeholder Product 1',
-                    price: '£10.00',
+                    title: 'warm jacket',
+                    price: '£30.00',
                     image: "assets/jacket.webp",
                   ),
                   ProductCard(
-                    title: 'Placeholder Product 2',
-                    price: '£15.00',
+                    title: 'nice sleek jean',
+                    price: '£12.00',
                     image:
                         'jeans.webp',
                   ),
                   ProductCard(
-                    title: 'Placeholder Product 3',
+                    title: 'well hot hoodie',
                     price: '£20.00',
                     image:
                         'assets/well_hot_hoodie.jpeg',
                   ),
                   ProductCard(
-                    title: 'Placeholder Product 4',
-                    price: '£25.00',
+                    title: 'the hot mits',
+                    price: '£7.00',
                     image:
                         'assets/gloves.webp',
                   ),
@@ -225,35 +225,38 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Image.asset(
-              image,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: Colors.grey[300],
-                  child: const Center(
-                    child: Icon(Icons.image_not_supported, color: Colors.grey),
-                  ),
-                );
-              },
+          
+          SizedBox(
+            height: 250, 
+            width: 370,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: Image.asset(
+                image,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: double.infinity,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: Colors.grey[300],
+                    child: const Center(
+                      child: Icon(Icons.image_not_supported, color: Colors.grey),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 4),
-              Text(
-                title,
-                style: const TextStyle(fontSize: 14, color: Colors.black),
-                maxLines: 2,
-              ),
-              const SizedBox(height: 4),
-              Text(
-                price,
-                style: const TextStyle(fontSize: 13, color: Colors.grey),
-              ),
-            ],
+          const SizedBox(height: 8),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 14, color: Colors.black),
+            maxLines: 2,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            price,
+            style: const TextStyle(fontSize: 13, color: Colors.grey),
           ),
         ],
       ),
