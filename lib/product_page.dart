@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
+import 'package:union_shop/part_builder/styled_button.dart';
 import 'package:union_shop/styles/genral_text.dart';
 
 class ProductPage extends StatelessWidget {
@@ -27,6 +28,10 @@ class ProductPage extends StatelessWidget {
 
   void colourCallBack(int? colour) {
     print(colour);
+  }
+
+  void addToCart() {
+    print("ADD to cart"); 
   }
 
   @override
@@ -147,6 +152,8 @@ class ProductPage extends StatelessWidget {
                     isExpanded: true,
                     underline: Container(height: 2, color: Colors.black),
                     ),
+
+                    const SizedBox(height: 12),
                     Row(
                     children: [
                       Expanded(
@@ -185,7 +192,16 @@ class ProductPage extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
+                const SizedBox(height: 12),
+                StyledButton(
+                key: const Key('add_to_cart_button'),
+                onPressed: addToCart,
+                icon: Icons.add_shopping_cart,
+                label: 'Add to Cart',
+                backgroundColor: Colors.green,
+              ),
+              const SizedBox(height: 12),
                 ],
               ),
             ),
