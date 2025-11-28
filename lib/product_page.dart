@@ -3,7 +3,19 @@ import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+  final String imageUrl;
+  final String name;
+  final String price;
+  final Text discp;
+
+  const ProductPage({
+    Key? key,
+    required this.imageUrl,
+    required this.name,
+    required this.price,
+    required this.discp,
+  }) : super(key: key);
+
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
