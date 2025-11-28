@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
+import 'package:union_shop/styles/genral_text.dart';
 
 class ProductPage extends StatelessWidget {
-  final String imageUrl;
-  final String name;
+  final String image;
+  final String title;
   final String price;
-  final Text discp;
+  final String discp;
+
+  
 
   const ProductPage({
     Key? key,
-    required this.imageUrl,
-    required this.name,
+    required this.image,
+    required this.title,
     required this.price,
     required this.discp,
   }) : super(key: key);
-
+  
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
+
+  void sizeCallBack(int? size) {
+    print(size);
+  }
+
+  void colourCallBack(int? colour) {
+    print(colour);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +69,8 @@ class ProductPage extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                      child: Image.asset(
+                        image,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
@@ -89,9 +101,9 @@ class ProductPage extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Product name
-                  const Text(
-                    'Placeholder Product Name',
-                    style: TextStyle(
+                  Text(
+                    title,
+                    style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -101,9 +113,9 @@ class ProductPage extends StatelessWidget {
                   const SizedBox(height: 12),
 
                   // Product price
-                  const Text(
-                    '£15.00',
-                    style: TextStyle(
+                  Text(
+                    price,
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF4d2963),
@@ -115,21 +127,50 @@ class ProductPage extends StatelessWidget {
                   // Product description
                   const Text(
                     'Description',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
+                    style: genHeader2
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    'This is a placeholder description for the product. Students should replace this with real product information and implement proper data management.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                      height: 1.5,
-                    ),
+                  Text(
+                    discp,
+                    style: genNormal
                   ),
+                  const SizedBox(height: 14),
+                  const Text(
+                    'Purchase',
+                    style: genHeader2
+                    ),
+
+
+                   const SizedBox(height: 5),
+                   DropdownButton(
+                      hint: const Text("Select Colour"),
+                      items: const[
+                      DropdownMenuItem(value: 1,child: Text("Blue"),),
+                      DropdownMenuItem(value: 2,child: Text("Red"),),
+                      DropdownMenuItem(value: 3,child: Text("Purple"),),
+                      ],
+                      onChanged: sizeCallBack,
+                      isExpanded: true,
+                   ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: DropdownButton(
+                          hint: const Text("Select Size"),
+                          items: const[
+                            DropdownMenuItem(value: 1,child: Text("Small"),),
+                            DropdownMenuItem(value: 2,child: Text("Medium"),),
+                            DropdownMenuItem(value: 3,child: Text("Large"),),
+                            DropdownMenuItem(value: 4,child: Text("XLarge"),),
+                          ],
+                          onChanged: sizeCallBack,
+                          isExpanded: true,
+                        ),
+
+
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

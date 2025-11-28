@@ -6,7 +6,7 @@ class ProductCard extends StatelessWidget {
   final String title;
   final String price;
   final String image;
-  final Text discp;
+  final String discp;
 
   const ProductCard({
     super.key,
@@ -21,7 +21,17 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductPage(
+              title: title,
+              price: price,
+              image: image,
+              discp: discp,
+            ),
+          ),
+        );
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
