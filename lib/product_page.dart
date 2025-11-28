@@ -127,53 +127,55 @@ class ProductPage extends StatelessWidget {
                   const Text('Purchase', style: genHeader2),
 
                   const SizedBox(height: 5),
-                  DropdownButton(
-                    hint: const Text("Select Colour"),
+                    DropdownButton(
+                    hint: const Text("Select Colour", style: TextStyle(fontWeight: FontWeight.bold)),
                     items: const [
                       DropdownMenuItem(
-                        value: 1,
-                        child: Text("Blue"),
+                      value: 1,
+                      child: Text("Blue"),
                       ),
                       DropdownMenuItem(
-                        value: 2,
-                        child: Text("Red"),
+                      value: 2,
+                      child: Text("Red"),
                       ),
                       DropdownMenuItem(
-                        value: 3,
-                        child: Text("Purple"),
+                      value: 3,
+                      child: Text("Purple"),
                       ),
                     ],
                     onChanged: sizeCallBack,
                     isExpanded: true,
-                  ),
-                  Row(
+                    underline: Container(height: 2, color: Colors.black),
+                    ),
+                    Row(
                     children: [
                       Expanded(
-                        child: DropdownButton(
-                          hint: const Text("Select Size"),
-                          items: const [
-                            DropdownMenuItem(
-                              value: 1,
-                              child: Text("Small"),
-                            ),
-                            DropdownMenuItem(
-                              value: 2,
-                              child: Text("Medium"),
-                            ),
-                            DropdownMenuItem(
-                              value: 3,
-                              child: Text("Large"),
-                            ),
-                            DropdownMenuItem(
-                              value: 4,
-                              child: Text("XLarge"),
-                            ),
-                          ],
-                          onChanged: sizeCallBack,
-                          isExpanded: true,
+                      child: DropdownButton(
+                        hint: const Text("Select Size", style: TextStyle(fontWeight: FontWeight.bold)),
+                        items: const [
+                        DropdownMenuItem(
+                          value: 1,
+                          child: Text("Small"),
                         ),
+                        DropdownMenuItem(
+                          value: 2,
+                          child: Text("Medium"),
+                        ),
+                        DropdownMenuItem(
+                          value: 3,
+                          child: Text("Large"),
+                        ),
+                        DropdownMenuItem(
+                          value: 4,
+                          child: Text("XLarge"),
+                        ),
+                        ],
+                        onChanged: sizeCallBack,
+                        isExpanded: true,
+                        underline: Container(height: 2, color: Colors.black),
                       ),
-                      
+                      ),
+                      const SizedBox(width: 12),
                       const Expanded(
                         child: TextField(
                           decoration: InputDecoration(
