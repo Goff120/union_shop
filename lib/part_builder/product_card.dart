@@ -16,7 +16,7 @@ class ProductCard extends StatelessWidget {
     required this.discp
   });
 
-//'/product': (context) => const ProductPage(),
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
