@@ -1,12 +1,25 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/part_builder/product_card.dart';
 
 import 'package:union_shop/styles/genral_text.dart';
 
-class AboutPage extends StatelessWidget {
-  const AboutPage({super.key});
+class CollectionProductPage extends StatelessWidget {
+  final String itemType;
+  
+  const CollectionProductPage({
+    super.key,
+    required this.itemType,
+  });
+
+  Future<Map<String, dynamic>> loadItems() async {
+  final jsonString = await rootBundle.loadString('assets/items.json');
+  return jsonDecode(jsonString) as Map<String, dynamic>;
+}
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
