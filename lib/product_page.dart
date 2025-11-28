@@ -9,8 +9,6 @@ class ProductPage extends StatelessWidget {
   final String price;
   final String discp;
 
-  
-
   const ProductPage({
     Key? key,
     required this.image,
@@ -18,7 +16,6 @@ class ProductPage extends StatelessWidget {
     required this.price,
     required this.discp,
   }) : super(key: key);
-  
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -32,7 +29,6 @@ class ProductPage extends StatelessWidget {
     print(colour);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +41,6 @@ class ProductPage extends StatelessWidget {
               color: Colors.white,
               child: const Column(
                 children: [
-
                   //header
                   MainHeader()
                 ],
@@ -125,49 +120,67 @@ class ProductPage extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Product description
-                  const Text(
-                    'Description',
-                    style: genHeader2
-                  ),
+                  const Text('Description', style: genHeader2),
                   const SizedBox(height: 8),
-                  Text(
-                    discp,
-                    style: genNormal
-                  ),
+                  Text(discp, style: genNormal),
                   const SizedBox(height: 14),
-                  const Text(
-                    'Purchase',
-                    style: genHeader2
-                    ),
+                  const Text('Purchase', style: genHeader2),
 
-
-                   const SizedBox(height: 5),
-                   DropdownButton(
-                      hint: const Text("Select Colour"),
-                      items: const[
-                      DropdownMenuItem(value: 1,child: Text("Blue"),),
-                      DropdownMenuItem(value: 2,child: Text("Red"),),
-                      DropdownMenuItem(value: 3,child: Text("Purple"),),
-                      ],
-                      onChanged: sizeCallBack,
-                      isExpanded: true,
-                   ),
+                  const SizedBox(height: 5),
+                  DropdownButton(
+                    hint: const Text("Select Colour"),
+                    items: const [
+                      DropdownMenuItem(
+                        value: 1,
+                        child: Text("Blue"),
+                      ),
+                      DropdownMenuItem(
+                        value: 2,
+                        child: Text("Red"),
+                      ),
+                      DropdownMenuItem(
+                        value: 3,
+                        child: Text("Purple"),
+                      ),
+                    ],
+                    onChanged: sizeCallBack,
+                    isExpanded: true,
+                  ),
                   Row(
                     children: [
                       Expanded(
                         child: DropdownButton(
                           hint: const Text("Select Size"),
-                          items: const[
-                            DropdownMenuItem(value: 1,child: Text("Small"),),
-                            DropdownMenuItem(value: 2,child: Text("Medium"),),
-                            DropdownMenuItem(value: 3,child: Text("Large"),),
-                            DropdownMenuItem(value: 4,child: Text("XLarge"),),
+                          items: const [
+                            DropdownMenuItem(
+                              value: 1,
+                              child: Text("Small"),
+                            ),
+                            DropdownMenuItem(
+                              value: 2,
+                              child: Text("Medium"),
+                            ),
+                            DropdownMenuItem(
+                              value: 3,
+                              child: Text("Large"),
+                            ),
+                            DropdownMenuItem(
+                              value: 4,
+                              child: Text("XLarge"),
+                            ),
                           ],
                           onChanged: sizeCallBack,
                           isExpanded: true,
                         ),
-
-
+                      ),
+                      
+                      const Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter amount',
+                          ),
+                        ),
                       ),
                     ],
                   )
