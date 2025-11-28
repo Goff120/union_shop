@@ -1,0 +1,40 @@
+{
+  "socks": [
+    {
+        "title": "rainbow socks",
+        "price": "£9.00",
+        "image": "sock2.jpeg",
+        "discp": "Colorful rainbow socks that brighten any outfit. Soft, comfy, and breathable, they’re perfect for daily wear and add a cheerful splash of personality every time you slip them on."
+    },
+    {
+        "title": "striped socks",
+        "price": "£7.50",
+        "image": "sock1.jpeg",
+        "discp": "Classic striped socks that combine style and comfort. Made from high-quality materials, these socks provide a snug fit and are perfect for both casual and formal occasions."
+    },
+    {
+        "title": "style socks",
+        "price": "£8.00",
+        "image": "sock3.jpeg",
+        "discp": "Trendy style socks that elevate your wardrobe. Crafted with care, these socks offer a perfect blend of fashion and function, making them a must-have accessory for any sock enthusiast."
+    },
+    {
+        "title": "argyle socks",
+        "price": "£10.00",
+        "image": "sock4.jpeg",
+        "discp": "Timeless argyle socks that exude sophistication and charm. Made with premium materials, these socks offer a comfortable fit and are perfect for elevating your everyday style."
+    },
+    {
+        "title": "geometric pattern socks",
+        "price": "£9.50",
+        "image": "sock5.jpeg",
+        "discp": "Modern geometric pattern socks that make a bold statement. Designed for comfort and durability, these socks are perfect for those who want to showcase their unique style."
+    },
+    {
+        "title": "novelty socks",
+        "price": "£11.00",
+        "image": "sock6.jpeg",
+        "discp": "Quirky novelty socks that bring fun to your feet. Made from soft, breathable fabric, these socks are perfect for expressing your personality while keeping your feet comfortable all day long."
+    }
+  ]
+}
