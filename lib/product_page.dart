@@ -199,7 +199,7 @@ class ProductPage extends StatelessWidget {
                 onPressed: addToCart,
                 icon: Icons.add_shopping_cart,
                 label: 'Add to Cart',
-                backgroundColor: Colors.green,
+                backgroundColor: const Color.fromARGB(255, 140, 76, 190),
               ),
               const SizedBox(height: 12),
                 ],
