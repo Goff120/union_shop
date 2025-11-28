@@ -192,7 +192,18 @@ class HomeScreen extends StatelessWidget {
                     image:
                         'assets/gloves.webp',
                   ),
-                  //all test
+                  ProductCard(
+                    title: 'silly hat',
+                    price: '£7.50',
+                    image:
+                        'hat1.jpeg',
+                  ),
+                  ProductCard(
+                    title: 'rainbow socks',
+                    price: '£9.00',
+                    image:
+                        'sock2.jpeg',
+                  ),
                 ],
               ),
             ],
