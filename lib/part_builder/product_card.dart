@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/product_page.dart';
 
 
 class ProductCard extends StatelessWidget {
   final String title;
   final String price;
   final String image;
+  final Text discp;
 
   const ProductCard({
     super.key,
     required this.title,
     required this.price,
     required this.image,
+    required this.discp
   });
 
+//'/product': (context) => const ProductPage(),
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
