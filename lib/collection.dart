@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/part_builder/collection_imagedart';
+import 'package:union_shop/part_builder/collection_image.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/styles/genral_text.dart';
