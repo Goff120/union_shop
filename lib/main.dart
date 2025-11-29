@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/winter sale.webp'),
+                    image: AssetImage('winter sale.webp'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -172,7 +172,7 @@ class HomeScreen extends StatelessWidget {
                   ProductCard(
                     title: 'warm jacket',
                     price: '£30.00',
-                    image: "assets/jacket.webp",
+                    image: "jacket.webp",
                     discp: "A thick, cozy warm jacket designed to keep you comfortable in cold weather. Stylish enough for everyday wear, with soft lining and durable material that protects against chilly winds and light rain.",
                   ),
                   ProductCard(
@@ -186,14 +186,14 @@ class HomeScreen extends StatelessWidget {
                     title: 'well hot hoodie',
                     price: '£20.00',
                     image:
-                        'assets/well_hot_hoodie.jpeg',
+                        'well_hot_hoodie.jpeg',
                     discp: "A warm, stylish hoodie built for comfort and personality. Soft on the inside and bold on the outside, it keeps you cozy all day while giving your outfit that perfect relaxed, confident vibe.",
                   ),
                   ProductCard(
                     title: 'the hot mits',
                     price: '£7.00',
                     image:
-                        'assets/gloves.webp',
+                        'gloves.webp',
                     discp: "Soft, insulated mitts designed to keep your hands warm in cold weather. Lightweight but protective, they offer comfort, durability, and a simple design that pairs well with any winter outfit.",
                   ),
                   ProductCard(
