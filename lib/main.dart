@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('winter sale.webp'),
+                    image: AssetImage('assets/images/winter sale.webp'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -172,42 +172,42 @@ class HomeScreen extends StatelessWidget {
                   ProductCard(
                     title: 'warm jacket',
                     price: '£30.00',
-                    image: "jacket.webp",
+                    image: "assets/images/jacket.webp",
                     discp: "A thick, cozy warm jacket designed to keep you comfortable in cold weather. Stylish enough for everyday wear, with soft lining and durable material that protects against chilly winds and light rain.",
                   ),
                   ProductCard(
                     title: 'nice sleek jean',
                     price: '£12.00',
                     image:
-                        'jeans.webp',
+                        'assets/images/jeans.webp',
                     discp: "These sleek jeans offer a clean, modern fit perfect for any outfit. Soft, flexible denim gives comfort while keeping a sharp look, making them ideal for casual days or dressed-up evenings.",
                   ),
                   ProductCard(
                     title: 'well hot hoodie',
                     price: '£20.00',
                     image:
-                        'well_hot_hoodie.jpeg',
+                        'assets/images/well_hot_hoodie.jpeg',
                     discp: "A warm, stylish hoodie built for comfort and personality. Soft on the inside and bold on the outside, it keeps you cozy all day while giving your outfit that perfect relaxed, confident vibe.",
                   ),
                   ProductCard(
                     title: 'the hot mits',
                     price: '£7.00',
                     image:
-                        'gloves.webp',
+                        'assets/images/gloves.webp',
                     discp: "Soft, insulated mitts designed to keep your hands warm in cold weather. Lightweight but protective, they offer comfort, durability, and a simple design that pairs well with any winter outfit.",
                   ),
                   ProductCard(
                     title: 'silly hat',
                     price: '£7.50',
                     image:
-                        'hat1.jpeg',
+                        'assets/images/hat1.jpeg',
                     discp: "A fun, quirky hat that brings personality to your outfit. Warm, comfortable, and full of charm, it adds a playful twist whether you’re braving the cold or just showing off your unique style.",
                   ),
                   ProductCard(
                     title: 'rainbow socks',
                     price: '£9.00',
                     image:
-                        'sock2.jpeg',
+                        'assets/images/sock2.jpeg',
                     discp: "Colorful rainbow socks that brighten any outfit. Soft, comfy, and breathable, they’re perfect for daily wear and add a cheerful splash of personality every time you slip them on.",
                   ),
                 ],
