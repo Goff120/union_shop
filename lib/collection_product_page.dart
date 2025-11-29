@@ -23,6 +23,9 @@ class CollectionProductPage extends StatelessWidget {
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
+  void filterCallBack(int? filter) {
+    print(filter);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +61,79 @@ class CollectionProductPage extends StatelessWidget {
                 ),
                 //end of header
 
+                //title
                 const SizedBox(height: 50),
                 Text(itemType.toUpperCase(), style: genHeader1),
                 const SizedBox(height: 30),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: DropdownButton(
+                        hint: const Text("filter by", style: genHeader2),
+                        items: const [
+                          DropdownMenuItem(
+                          value: 1,
+                          child: Text("all products"),
+                          ),
+                          DropdownMenuItem(
+                          value: 2,
+                          child: Text("clothes"),
+                          ),
+                          DropdownMenuItem(
+                          value: 3,
+                          child: Text("merch"),
+                          ),
+                          DropdownMenuItem(
+                          value: 4,
+                          child: Text("popular"),
+                          ),
+                          DropdownMenuItem(
+                          value: 5,
+                          child: Text("popular"),
+                          ),
+                        ],
+                        onChanged: filterCallBack,
+                        isExpanded: true,
+                        underline: Container(height: 2, color: Colors.black),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: DropdownButton(
+                        hint: const Text("sort by", style: genHeader2),
+                        items: const [
+                          DropdownMenuItem(
+                          value: 1,
+                          child: Text("price: low to high"),
+                          ),
+                          DropdownMenuItem(
+                          value: 2,
+                          child: Text("price: high to low"),
+                          ),
+                          DropdownMenuItem(
+                          value: 3,
+                          child: Text("newest first"),
+                          ),
+                          DropdownMenuItem(
+                          value: 4,
+                          child: Text("best sellers"),
+                          ),
+                          DropdownMenuItem(
+                          value: 5,
+                          child: Text("ratings"),
+                          ),
+                        ],
+                        onChanged: filterCallBack,
+                        isExpanded: true,
+                        underline: Container(height: 2, color: Colors.black),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
 
                 // Product Grid
                 Padding(
