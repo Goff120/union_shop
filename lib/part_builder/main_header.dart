@@ -59,6 +59,7 @@ class MainHeader extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   // 🔵 Logo
                   GestureDetector(
@@ -95,54 +96,52 @@ class MainHeader extends StatelessWidget {
 
                   const Spacer(),
 
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 600),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.search,
-                              size: 18, color: Colors.grey),
-                          padding: const EdgeInsets.all(8),
-                          constraints: const BoxConstraints(
-                            minWidth: 32,
-                            minHeight: 32,
-                          ),
-                          onPressed: onSearchTap,
+                  // Icon buttons row
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.search,
+                            size: 18, color: Colors.grey),
+                        padding: const EdgeInsets.all(8),
+                        constraints: const BoxConstraints(
+                          minWidth: 32,
+                          minHeight: 32,
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.person_outline,
-                              size: 18, color: Colors.grey),
-                          padding: const EdgeInsets.all(8),
-                          constraints: const BoxConstraints(
-                            minWidth: 32,
-                            minHeight: 32,
-                          ),
-                          onPressed: onAccountTap,
+                        onPressed: onSearchTap,
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.person_outline,
+                            size: 18, color: Colors.grey),
+                        padding: const EdgeInsets.all(8),
+                        constraints: const BoxConstraints(
+                          minWidth: 32,
+                          minHeight: 32,
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.shopping_bag_outlined,
-                              size: 18, color: Colors.grey),
-                          padding: const EdgeInsets.all(8),
-                          constraints: const BoxConstraints(
-                            minWidth: 32,
-                            minHeight: 32,
-                          ),
-                          onPressed: onBagTap,
+                        onPressed: onAccountTap,
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.shopping_bag_outlined,
+                            size: 18, color: Colors.grey),
+                        padding: const EdgeInsets.all(8),
+                        constraints: const BoxConstraints(
+                          minWidth: 32,
+                          minHeight: 32,
                         ),
-                        if (isMobile) 
-                        IconButton(
-                          icon: const Icon(Icons.menu,
-                              size: 18, color: Colors.grey),
-                          padding: const EdgeInsets.all(8),
-                          constraints: const BoxConstraints(
-                            minWidth: 32,
-                            minHeight: 32,
-                          ),
-                          onPressed: () => onMenuTap(context),
+                        onPressed: onBagTap,
+                      ),
+                      if (isMobile) 
+                      IconButton(
+                        icon: const Icon(Icons.menu,
+                            size: 18, color: Colors.grey),
+                        padding: const EdgeInsets.all(8),
+                        constraints: const BoxConstraints(
+                          minWidth: 32,
+                          minHeight: 32,
                         ),
-                      ],
-                    ),
+                        onPressed: () => onMenuTap(context),
+                      ),
+                    ],
                   ),
                 ],
               ),
