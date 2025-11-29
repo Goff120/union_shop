@@ -66,14 +66,19 @@ class CollectionProductPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
-                    children: products.map((item) {
-                      return ProductCard(
-                        title: item['title'],
-                        price: item['price'],
-                        image: item['image'],
-                        discp: item['discp'],
-                      );
-                    }).toList(),
+                  children: products.map((item) {
+                    return Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: ProductCard(
+                      title: item['title'],
+                      price: item['price'],
+                      image: item['image'],
+                      discp: item['discp'],
+                    ),
+                    );
+                  }
+                    
+                    ).toList(),
                   ),
                 ),
 
