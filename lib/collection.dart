@@ -40,7 +40,7 @@ class CollectionPage extends StatelessWidget {
               CollectionImage(
                 imageUrl: 'assets/images/sock3.jpeg',
                 text: 'SOCKS',
-                routeName: 'sock',
+                routeName: 'socks',
                 width: 350,
                 height: 250,
               ),
