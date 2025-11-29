@@ -25,7 +25,6 @@ class CollectionImage extends StatelessWidget {
           context,
           MaterialPageRoute(
           builder: (context) => CollectionProductPage(
-            routeName,
             itemType: routeName, 
           ),
         )

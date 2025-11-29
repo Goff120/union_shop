@@ -9,14 +9,14 @@ import 'package:union_shop/styles/genral_text.dart';
 class CollectionProductPage extends StatelessWidget {
   final String itemType;
 
-  const CollectionProductPage(String s, {
+  const CollectionProductPage({
     super.key,
     required this.itemType,
   });
 
   /// Load entire JSON file
   Future<Map<String, dynamic>> loadItems() async {
-    final jsonString = await rootBundle.loadString('assets/items.json');
+    final jsonString = await rootBundle.loadString('assets/json/items.json');
     return jsonDecode(jsonString) as Map<String, dynamic>;
   }
 
