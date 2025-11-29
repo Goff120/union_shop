@@ -150,7 +150,7 @@ class ProductPage extends StatelessWidget {
                     ],
                     onChanged: sizeCallBack,
                     isExpanded: true,
-                    underline: Container(height: 2, color: Colors.black),
+                    underline: Container(height: 3, color: Colors.black),
                     ),
 
                     const SizedBox(height: 12),
