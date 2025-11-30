@@ -59,7 +59,7 @@ class SignUpPage extends StatelessWidget {
                   children: [
                     const Text('Sign Up', style: genHeader1),
                     const SizedBox(height: 24),
-                    const Text("choose how you would like to sign up"),
+                    const Text("choose how you would like to sign up", style: genNormal),
                     const SizedBox(height: 5),
 
                     StyledButton(
@@ -68,6 +68,12 @@ class SignUpPage extends StatelessWidget {
                       label: 'Sign in with Shop',
                       backgroundColor: const Color.fromARGB(255, 64, 117, 221),
                     ),
+                    const SizedBox(height: 5),
+                    const SizedBox(height: 5),
+                    const Center(
+                      child: Text("------------ or ------------", style: genNormal),
+                    ),
+                    const SizedBox(height: 5),
                     
                   ],
                 ),
