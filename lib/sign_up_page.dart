@@ -75,6 +75,14 @@ class SignUpPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     
+
+                    StyledButton(
+                      key: const Key('sign in'),
+                      onPressed: _shopCallback,
+                      label: 'Sign in',
+                      backgroundColor: const Color.fromARGB(255, 149, 36, 230),
+                    ),
+                    
                   ],
                 ),
               ),
