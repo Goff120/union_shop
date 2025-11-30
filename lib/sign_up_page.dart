@@ -79,6 +79,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   const TextField(
+                    obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'password',
