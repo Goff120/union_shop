@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/part_builder/styled_button.dart';
 
 
 import 'package:union_shop/styles/genral_text.dart';
@@ -8,6 +9,10 @@ class SignUpPage extends StatelessWidget {
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+  }
+
+  void _shopCallback() {
+    //none function shop
   }
 
   @override
@@ -49,12 +54,20 @@ class SignUpPage extends StatelessWidget {
                   color: Colors.white,
                   border: Border.all(color: Colors.black, width: 1),
                 ),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Sign Up', style: genHeader1),
-                    SizedBox(height: 24),
+                    const Text('Sign Up', style: genHeader1),
+                    const SizedBox(height: 24),
+                    const Text("choose how you would like to sign up"),
+                    const SizedBox(height: 5),
 
+                    StyledButton(
+                      key: const Key('shop'),
+                      onPressed: _shopCallback,
+                      label: 'Sign in with Shop',
+                      backgroundColor: const Color.fromARGB(255, 64, 117, 221),
+                    ),
                     
                   ],
                 ),
