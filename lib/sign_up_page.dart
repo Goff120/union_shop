@@ -18,76 +18,84 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 40),
-            // 🔵 Logo
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).pushNamed('/');
-              },
-              child: Image.network(
-                'https://shop.upsu.net/cdn/shop/files/upsu_300x300.png?v=1614735854',
-                height: 28,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: Colors.grey[300],
-                    width: 28,
-                    height: 28,
-                    child: const Icon(Icons.image_not_supported,
-                        color: Colors.grey),
-                  );
-                },
+      body: Center(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 40),
+            child: Container(
+              width: 400,
+              padding: const EdgeInsets.all(32),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black, width: 1),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/');
+                      },
+                      child: Image.network(
+                        'https://shop.upsu.net/cdn/shop/files/upsu_300x300.png?v=1614735854',
+                        height: 28,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            color: Colors.grey[300],
+                            width: 28,
+                            height: 28,
+                            child: const Icon(Icons.image_not_supported,
+                                color: Colors.grey),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  const Text('Sign Up', style: genHeader1),
+                  const SizedBox(height: 24),
+                  const Text("choose how you would like to sign up", style: genNormal),
+                  const SizedBox(height: 5),
+
+                  StyledButton(
+                    key: const Key('shop'),
+                    onPressed: _shopCallback,
+                    label: 'Sign in with Shop',
+                    backgroundColor: const Color.fromARGB(255, 64, 117, 221),
+                  ),
+                  const SizedBox(height: 5),
+                  const SizedBox(height: 5),
+                  const Center(
+                    child: Text("------------ or ------------", style: genNormal),
+                  ),
+                  const SizedBox(height: 5),
+
+                  const TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'username',
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  const TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'password',
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+
+                  StyledButton(
+                    key: const Key('sign in'),
+                    onPressed: _shopCallback,
+                    label: 'Sign in',
+                    backgroundColor: const Color.fromARGB(255, 149, 36, 230),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 60),
-            
-            // Sign up form box
-            Center(
-              child: Container(
-                width: 400,
-                padding: const EdgeInsets.all(32),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.black, width: 1),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Sign Up', style: genHeader1),
-                    const SizedBox(height: 24),
-                    const Text("choose how you would like to sign up", style: genNormal),
-                    const SizedBox(height: 5),
-
-                    StyledButton(
-                      key: const Key('shop'),
-                      onPressed: _shopCallback,
-                      label: 'Sign in with Shop',
-                      backgroundColor: const Color.fromARGB(255, 64, 117, 221),
-                    ),
-                    const SizedBox(height: 5),
-                    const SizedBox(height: 5),
-                    const Center(
-                      child: Text("------------ or ------------", style: genNormal),
-                    ),
-                    const SizedBox(height: 5),
-                    
-
-                    StyledButton(
-                      key: const Key('sign in'),
-                      onPressed: _shopCallback,
-                      label: 'Sign in',
-                      backgroundColor: const Color.fromARGB(255, 149, 36, 230),
-                    ),
-                    
-                  ],
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
