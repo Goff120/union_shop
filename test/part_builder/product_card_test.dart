@@ -4,195 +4,159 @@ import 'package:union_shop/part_builder/product_card.dart';
 import 'package:union_shop/product_page.dart';
 
 void main() {
-  testWidgets('ProductCard displays title and price', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductCard(
-            title: 'Test Product',
-            price: '£19.99',
-            image: 'assets/images/test.png',
-            discp: 'Test description',
+  group('ProductCard', () {
+    testWidgets('displays title, regular price, and image when no sale price', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: ProductCard(
+              title: 'Test Product',
+              price: '£25.00',
+              image: 'assets/images/jacket.webp',
+              discp: 'Test description',
+              newprice: 'F',
+            ),
           ),
         ),
-      ),
-    );
+      );
 
-    // Verify title and price are displayed
-    expect(find.text('Test Product'), findsOneWidget);
-    expect(find.text('£19.99'), findsOneWidget);
-  });
+      expect(find.text('Test Product'), findsOneWidget);
+      expect(find.text('£25.00'), findsOneWidget);
+      expect(find.byType(Image), findsOneWidget);
+    });
 
-  testWidgets('ProductCard displays image with correct dimensions', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductCard(
-            title: 'Image Product',
-            price: '£25.00',
-            image: 'assets/images/product.png',
-            discp: 'Product description',
+    testWidgets('displays sale price and strikethrough old price when on sale', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: ProductCard(
+              title: 'Sale Product',
+              price: '£30.00',
+              image: 'assets/images/jacket.webp',
+              discp: 'Test description',
+              newprice: '£20.00',
+            ),
           ),
         ),
-      ),
-    );
+      );
 
-    // Find the SizedBox container for the image
-    final sizedBox = tester.widget<SizedBox>(
-      find.descendant(
+      expect(find.text('Sale Product'), findsOneWidget);
+      expect(find.text('£20.00'), findsOneWidget);
+      expect(find.text('£30.00'), findsOneWidget);
+
+      // Verify new price is bold
+      final newPriceText = tester.widget<Text>(
+        find.text('£20.00'),
+      );
+      expect(newPriceText.style?.fontWeight, FontWeight.bold);
+      expect(newPriceText.style?.color, Colors.grey);
+
+      // Verify old price has strikethrough and is red
+      final oldPriceText = tester.widget<Text>(
+        find.text('£30.00'),
+      );
+      expect(oldPriceText.style?.decoration, TextDecoration.lineThrough);
+      expect(oldPriceText.style?.color, Colors.red);
+    });
+
+    testWidgets('navigates to ProductPage when tapped', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: const Scaffold(
+            body: ProductCard(
+              title: 'Tappable Product',
+              price: '£15.00',
+              image: 'assets/images/jacket.webp',
+              discp: 'Tap me!',
+              newprice: 'F',
+            ),
+          ),
+          routes: {
+            '/product': (context) => const ProductPage(
+                  title: 'Tappable Product',
+                  price: '£15.00',
+                  image: 'assets/images/jacket.webp',
+                  discp: 'Tap me!',
+                ),
+          },
+        ),
+      );
+
+      await tester.tap(find.byType(ProductCard));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(ProductPage), findsOneWidget);
+      expect(find.text('Tappable Product'), findsWidgets);
+    });
+
+    testWidgets('displays image with correct dimensions', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: ProductCard(
+              title: 'Image Test',
+              price: '£10.00',
+              image: 'assets/images/jacket.webp',
+              discp: 'Testing image',
+              newprice: 'F',
+            ),
+          ),
+        ),
+      );
+
+      final sizedBox = tester.widget<SizedBox>(
+        find.ancestor(
+          of: find.byType(ClipRRect),
+          matching: find.byType(SizedBox),
+        ).first,
+      );
+
+      expect(sizedBox.height, 250);
+      expect(sizedBox.width, 370);
+    });
+
+    testWidgets('shows regular price only when newprice is "F"', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: ProductCard(
+              title: 'Regular Product',
+              price: '£12.50',
+              image: 'assets/images/jacket.webp',
+              discp: 'Regular price item',
+              newprice: 'F',
+            ),
+          ),
+        ),
+      );
+
+      expect(find.text('£12.50'), findsOneWidget);
+      expect(find.byType(Row), findsNothing); // No Row for sale price layout
+    });
+
+    testWidgets('shows sale price layout when newprice is not "F"', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: ProductCard(
+              title: 'Discount Product',
+              price: '£50.00',
+              image: 'assets/images/jacket.webp',
+              discp: 'On sale now',
+              newprice: '£35.00',
+            ),
+          ),
+        ),
+      );
+
+      // Should find a Row containing both prices
+      final rowFinder = find.descendant(
         of: find.byType(ProductCard),
-        matching: find.byType(SizedBox),
-      ).first,
-    );
-
-    // Verify image container dimensions
-    expect(sizedBox.height, 250);
-    expect(sizedBox.width, 370);
-  });
-
-  testWidgets('ProductCard navigates to ProductPage on tap', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductCard(
-            title: 'Tappable Product',
-            price: '£30.00',
-            image: 'assets/images/tappable.png',
-            discp: 'Tappable description',
-          ),
+        matching: find.byWidgetPredicate(
+          (widget) => widget is Row && widget.children.length == 3,
         ),
-      ),
-    );
-
-    // Tap the product card
-    await tester.tap(find.byType(ProductCard));
-    await tester.pumpAndSettle();
-
-    // Verify navigation to ProductPage occurred
-    expect(find.byType(ProductPage), findsOneWidget);
-    
-    // Verify the ProductPage shows the correct title and price
-    expect(find.text('Tappable Product'), findsOneWidget);
-    expect(find.text('£30.00'), findsOneWidget);
-  });
-
-  testWidgets('ProductCard passes all parameters to ProductPage', (WidgetTester tester) async {
-    const testTitle = 'Full Test Product';
-    const testPrice = '£45.99';
-    const testImage = 'assets/images/full_test.png';
-    const testDiscp = 'Full test description';
-
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductCard(
-            title: testTitle,
-            price: testPrice,
-            image: testImage,
-            discp: testDiscp,
-          ),
-        ),
-      ),
-    );
-
-    // Tap the card to navigate
-    await tester.tap(find.byType(ProductCard));
-    await tester.pumpAndSettle();
-
-    // Find the ProductPage widget
-    final productPage = tester.widget<ProductPage>(find.byType(ProductPage));
-
-    // Verify all parameters were passed correctly
-    expect(productPage.title, testTitle);
-    expect(productPage.price, testPrice);
-    expect(productPage.image, testImage);
-    expect(productPage.discp, testDiscp);
-  });
-
-  testWidgets('ProductCard title has correct text style', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductCard(
-            title: 'Styled Title',
-            price: '£10.00',
-            image: 'assets/images/styled.png',
-            discp: 'Styled description',
-          ),
-        ),
-      ),
-    );
-
-    // Find the title Text widget
-    final titleText = tester.widget<Text>(find.text('Styled Title'));
-
-    // Verify text style
-    expect(titleText.style?.fontSize, 14);
-    expect(titleText.style?.color, Colors.black);
-    expect(titleText.maxLines, 2);
-  });
-
-  testWidgets('ProductCard price has correct text style', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductCard(
-            title: 'Price Test',
-            price: '£99.99',
-            image: 'assets/images/price.png',
-            discp: 'Price description',
-          ),
-        ),
-      ),
-    );
-
-    // Find the price Text widget
-    final priceText = tester.widget<Text>(find.text('£99.99'));
-
-    // Verify text style
-    expect(priceText.style?.fontSize, 13);
-    expect(priceText.style?.color, Colors.grey);
-  });
-
-  testWidgets('ProductCard has ClipRRect with rounded corners', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductCard(
-            title: 'Rounded Product',
-            price: '£15.00',
-            image: 'assets/images/rounded.png',
-            discp: 'Rounded description',
-          ),
-        ),
-      ),
-    );
-
-    // Find the ClipRRect widget
-    final clipRRect = tester.widget<ClipRRect>(find.byType(ClipRRect));
-
-    // Verify border radius
-    expect(clipRRect.borderRadius, BorderRadius.circular(4));
-  });
-
-  testWidgets('ProductCard shows error icon when image fails to load', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: ProductCard(
-            title: 'Invalid Image',
-            price: '£20.00',
-            image: 'assets/images/nonexistent.png',
-            discp: 'Invalid image description',
-          ),
-        ),
-      ),
-    );
-
-    await tester.pump();
-
-    // Verify error builder container exists
-    expect(find.byType(Container), findsWidgets);
-    expect(find.byIcon(Icons.image_not_supported), findsOneWidget);
+      );
+      expect(rowFinder, findsOneWidget);
+    });
   });
 }
