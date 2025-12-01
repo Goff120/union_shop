@@ -174,6 +174,7 @@ class HomeScreen extends StatelessWidget {
                     price: '£30.00',
                     image: "assets/images/jacket.webp",
                     discp: "A thick, cozy warm jacket designed to keep you comfortable in cold weather. Stylish enough for everyday wear, with soft lining and durable material that protects against chilly winds and light rain.",
+                    newprice: "F",
                   ),
                   ProductCard(
                     title: 'nice sleek jean',
@@ -181,6 +182,7 @@ class HomeScreen extends StatelessWidget {
                     image:
                         'assets/images/jeans.webp',
                     discp: "These sleek jeans offer a clean, modern fit perfect for any outfit. Soft, flexible denim gives comfort while keeping a sharp look, making them ideal for casual days or dressed-up evenings.",
+                    newprice: "F",
                   ),
                   ProductCard(
                     title: 'well hot hoodie',
@@ -188,6 +190,7 @@ class HomeScreen extends StatelessWidget {
                     image:
                         'assets/images/well_hot_hoodie.jpeg',
                     discp: "A warm, stylish hoodie built for comfort and personality. Soft on the inside and bold on the outside, it keeps you cozy all day while giving your outfit that perfect relaxed, confident vibe.",
+                    newprice: "F",
                   ),
                   ProductCard(
                     title: 'the hot mits',
@@ -195,6 +198,7 @@ class HomeScreen extends StatelessWidget {
                     image:
                         'assets/images/gloves.webp',
                     discp: "Soft, insulated mitts designed to keep your hands warm in cold weather. Lightweight but protective, they offer comfort, durability, and a simple design that pairs well with any winter outfit.",
+                    newprice: "F",
                   ),
                   ProductCard(
                     title: 'silly hat',
@@ -202,13 +206,15 @@ class HomeScreen extends StatelessWidget {
                     image:
                         'assets/images/hat1.jpeg',
                     discp: "A fun, quirky hat that brings personality to your outfit. Warm, comfortable, and full of charm, it adds a playful twist whether you’re braving the cold or just showing off your unique style.",
+                    newprice: "F",
                   ),
                   ProductCard(
                     title: 'rainbow socks',
                     price: '£9.00',
                     image:
                         'assets/images/sock2.jpeg',
-                    discp: "Colorful rainbow socks that brighten any outfit. Soft, comfy, and breathable, they’re perfect for daily wear and add a cheerful splash of personality every time you slip them on.",
+                    discp: "Colorful rainbow socks that brighten any outfit. Soft, comfy, and breathable, they're perfect for daily wear and add a cheerful splash of personality every time you slip them on.",
+                    newprice: "F",
                   ),
                 ],
               ),
