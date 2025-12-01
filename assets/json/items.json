@@ -4,37 +4,43 @@
         "title": "rainbow socks",
         "price": "£9.00",
         "image": "assets/images/sock2.jpeg",
-        "discp": "Colorful rainbow socks that brighten any outfit. Soft, comfy, and breathable, they’re perfect for daily wear and add a cheerful splash of personality every time you slip them on."
+        "discp": "Colorful rainbow socks that brighten any outfit. Soft, comfy, and breathable, they're perfect for daily wear and add a cheerful splash of personality every time you slip them on.",
+        "newprice": "F"
     },
     {
         "title": "striped socks",
         "price": "£7.50",
         "image": "assets/images/socks1.jpeg",
-        "discp": "Classic striped socks that combine style and comfort. Made from high-quality materials, these socks provide a snug fit and are perfect for both casual and formal occasions."
+        "discp": "Classic striped socks that combine style and comfort. Made from high-quality materials, these socks provide a snug fit and are perfect for both casual and formal occasions.",
+        "newprice": "F"
     },
     {
         "title": "style socks",
         "price": "£8.00",
         "image": "assets/images/sock3.jpeg",
-        "discp": "Trendy style socks that elevate your wardrobe. Crafted with care, these socks offer a perfect blend of fashion and function, making them a must-have accessory for any sock enthusiast."
+        "discp": "Trendy style socks that elevate your wardrobe. Crafted with care, these socks offer a perfect blend of fashion and function, making them a must-have accessory for any sock enthusiast.",
+        "newprice": "F"
     },
     {
         "title": "argyle socks",
         "price": "£10.00",
         "image": "assets/images/sock4.jpeg",
-        "discp": "Timeless argyle socks that exude sophistication and charm. Made with premium materials, these socks offer a comfortable fit and are perfect for elevating your everyday style."
+        "discp": "Timeless argyle socks that exude sophistication and charm. Made with premium materials, these socks offer a comfortable fit and are perfect for elevating your everyday style.",
+        "newprice": "£7.00"
     },
     {
         "title": "geometric pattern socks",
         "price": "£9.50",
         "image": "assets/images/sock5.jpeg",
-        "discp": "Modern geometric pattern socks that make a bold statement. Designed for comfort and durability, these socks are perfect for those who want to showcase their unique style."
+        "discp": "Modern geometric pattern socks that make a bold statement. Designed for comfort and durability, these socks are perfect for those who want to showcase their unique style.",
+        "newprice": "F"
     },
     {
         "title": "novelty socks",
         "price": "£11.00",
         "image": "assets/images/sock6.jpeg",
-        "discp": "Quirky novelty socks that bring fun to your feet. Made from soft, breathable fabric, these socks are perfect for expressing your personality while keeping your feet comfortable all day long."
+        "discp": "Quirky novelty socks that bring fun to your feet. Made from soft, breathable fabric, these socks are perfect for expressing your personality while keeping your feet comfortable all day long.",
+        "newprice": "£8.00"
     }
   ],
     "shirts": [
@@ -42,31 +48,88 @@
                 "title": "classic blue shirt",
                 "price": "£25.00",
                 "image": "assets/images/shirt1.jpeg",
-                "discp": "A versatile classic blue shirt perfect for any occasion. Made from premium fabric, it offers comfort and style for both casual and professional settings."
+                "discp": "A versatile classic blue shirt perfect for any occasion. Made from premium fabric, it offers comfort and style for both casual and professional settings.",
+                "newprice": "F"
         },
         {
                 "title": "space shirt",
                 "price": "£22.00",
                 "image": "assets/images/shirt7.jpeg",
-                "discp": "a black T with a nice netural space theme. Breathable and durable, it pairs perfectly with any outfit for a clean, polished look."
+                "discp": "a black T with a nice netural space theme. Breathable and durable, it pairs perfectly with any outfit for a clean, polished look.",
+                "newprice": "£16.00"
         },
         {
             "title": "oxford button-down shirt",
             "price": "£28.00",
             "image": "assets/images/shirt4.jpeg",
-            "discp": "Classic oxford button-down shirt with a refined finish. Perfect for business casual and weekend wear, it combines durability with timeless style."
+            "discp": "Classic oxford button-down shirt with a refined finish. Perfect for business casual and weekend wear, it combines durability with timeless style.",
+            "newprice": "F"
         },
         {
             "title": "linen summer shirt",
             "price": "£26.00",
             "image": "assets/images/shirt5.jpeg",
-            "discp": "Lightweight linen summer shirt ideal for warm weather. Breathable and comfortable, it's perfect for vacation or casual summer outings."
+            "discp": "Lightweight linen summer shirt ideal for warm weather. Breathable and comfortable, it's perfect for vacation or casual summer outings.",
+            "newprice": "£19.00"
         },
         {
             "title": "flannel plaid shirt",
             "price": "£24.00",
             "image": "assets/images/shirt6.jpeg",
-            "discp": "Cozy flannel plaid shirt perfect for layering. Soft and warm, it's ideal for fall and winter while maintaining a relaxed, approachable style."
+            "discp": "Cozy flannel plaid shirt perfect for layering. Soft and warm, it's ideal for fall and winter while maintaining a relaxed, approachable style.",
+            "newprice": "£18.00"
         }
+    ],
+    "sale": [
+        {
+            "title": "vintage denim jacket",
+            "price": "£20.00",
+            "image": "assets/images/jacket1.jpeg",
+            "discp": "Classic vintage denim jacket with a timeless appeal. Durable and stylish, it's perfect for layering and adds a rugged touch to any outfit.",
+            "newprice": "£15.00"
+        },
+        {
+            "title": "argyle socks",
+            "price": "£10.00",
+            "image": "assets/images/sock4.jpeg",
+            "discp": "Timeless argyle socks that exude sophistication and charm. Made with premium materials, these socks offer a comfortable fit and are perfect for elevating your everyday style.",
+            "newprice": "£7.00"
+        },
+        {
+            "title": "flannel plaid shirt",
+            "price": "£24.00",
+            "image": "assets/images/shirt6.jpeg",
+            "discp": "Cozy flannel plaid shirt perfect for layering. Soft and warm, it's ideal for fall and winter while maintaining a relaxed, approachable style.",
+            "newprice": "£18.00"
+        },
+        {
+            "title": "linen summer shirt",
+            "price": "£26.00",
+            "image": "assets/images/shirt5.jpeg",
+            "discp": "Lightweight linen summer shirt ideal for warm weather. Breathable and comfortable, it's perfect for vacation or casual summer outings.",
+            "newprice": "£19.00"
+        },
+        {
+            "title": "novelty socks",
+            "price": "£11.00",
+            "image": "assets/images/sock6.jpeg",
+            "discp": "Quirky novelty socks that bring fun to your feet. Made from soft, breathable fabric, these socks are perfect for expressing your personality while keeping your feet comfortable all day long.",
+            "newprice": "£8.00"
+        },
+        {
+            "title": "space shirt",
+            "price": "£22.00",
+            "image": "assets/images/shirt7.jpeg",
+            "discp": "a black T with a nice netural space theme. Breathable and durable, it pairs perfectly with any outfit for a clean, polished look.",
+            "newprice": "£16.00"
+        },
+        {
+            "title": "pin",
+            "price": "£7.50",
+            "image": "assets/images/merch2.jpeg",
+            "discp": "a great show of our pride as a uni with this high quality enamel pin. perfect for bags, jackets, hats and more!",
+            "newprice": "£5.00"
+        }
+        
     ]
 }
