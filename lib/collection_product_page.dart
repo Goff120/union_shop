@@ -23,8 +23,34 @@ class CollectionProductPage extends StatelessWidget {
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
+  
   void filterCallBack(int? filter) {
     print(filter);
+  }
+
+  /// Get products based on itemType
+  /// If itemType is "sale", collect all items with newprice != "F"
+  List<dynamic> getProducts(Map<String, dynamic> allItems) {
+    if (itemType.toLowerCase() == 'sale') {
+      List<dynamic> saleItems = [];
+      
+      // Loop through all categories
+      allItems.forEach((category, items) {
+        if (items is List) {
+          // Filter items that have a sale price (newprice != "F")
+          for (var item in items) {
+            if (item['newprice'] != null && item['newprice'] != 'F' && item['newprice'] != false) {
+              saleItems.add(item);
+            }
+          }
+        }
+      });
+      
+      return saleItems;
+    } else {
+      // Return items from specific category
+      return allItems[itemType] ?? [];
+    }
   }
 
   @override
@@ -43,7 +69,7 @@ class CollectionProductPage extends StatelessWidget {
           }
 
           final allItems = snapshot.data!;
-          final List<dynamic> products = allItems[itemType] ?? [];
+          final List<dynamic> products = getProducts(allItems);
 
           return SingleChildScrollView(
             child: Column(
