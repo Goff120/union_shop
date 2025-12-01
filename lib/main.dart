@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:union_shop/about_page.dart';
 import 'package:union_shop/collection.dart';
+import 'package:union_shop/collection_product_page.dart';
+
 
 
 import 'package:union_shop/part_builder/main_header.dart';
@@ -24,15 +26,23 @@ class UnionShopApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
       ),
       home: const HomeScreen(),
-      // By default, the app starts at the '/' route, which is the HomeScreen
       initialRoute: '/',
-      // When navigating to '/product', build and return the ProductPage
-      // In your browser, try this link: http://localhost:49856/#/product
       routes: {
-        
-        // About route - create AboutPage widget (e.g. lib/about_page.dart) and import it above
         '/about': (context) => const AboutPage(),
         '/collection': (context) => const CollectionPage(),
+      },
+      onGenerateRoute: (settings) {
+        // Handle routes like /collection/socks, /collection/shirts, etc.
+        if (settings.name?.startsWith('/collection/') == true) {
+          final itemType = settings.name!.split('/').last;
+          return MaterialPageRoute(
+            builder: (context) => CollectionProductPage(itemType: itemType),
+            settings: settings,
+          );
+        }
+        
+        // Return null for unknown routes (will use onUnknownRoute or show error)
+        return null;
       },
     );
   }
