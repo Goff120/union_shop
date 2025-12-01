@@ -40,8 +40,7 @@ class UnionShopApp extends StatelessWidget {
             settings: settings,
           );
         }
-        
-        // Return null for unknown routes (will use onUnknownRoute or show error)
+
         return null;
       },
     );
