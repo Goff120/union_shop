@@ -79,57 +79,5 @@
             "discp": "Cozy flannel plaid shirt perfect for layering. Soft and warm, it's ideal for fall and winter while maintaining a relaxed, approachable style.",
             "newprice": "£18.00"
         }
-    ],
-    "sale": [
-        {
-            "title": "vintage denim jacket",
-            "price": "£20.00",
-            "image": "assets/images/jacket1.jpeg",
-            "discp": "Classic vintage denim jacket with a timeless appeal. Durable and stylish, it's perfect for layering and adds a rugged touch to any outfit.",
-            "newprice": "£15.00"
-        },
-        {
-            "title": "argyle socks",
-            "price": "£10.00",
-            "image": "assets/images/sock4.jpeg",
-            "discp": "Timeless argyle socks that exude sophistication and charm. Made with premium materials, these socks offer a comfortable fit and are perfect for elevating your everyday style.",
-            "newprice": "£7.00"
-        },
-        {
-            "title": "flannel plaid shirt",
-            "price": "£24.00",
-            "image": "assets/images/shirt6.jpeg",
-            "discp": "Cozy flannel plaid shirt perfect for layering. Soft and warm, it's ideal for fall and winter while maintaining a relaxed, approachable style.",
-            "newprice": "£18.00"
-        },
-        {
-            "title": "linen summer shirt",
-            "price": "£26.00",
-            "image": "assets/images/shirt5.jpeg",
-            "discp": "Lightweight linen summer shirt ideal for warm weather. Breathable and comfortable, it's perfect for vacation or casual summer outings.",
-            "newprice": "£19.00"
-        },
-        {
-            "title": "novelty socks",
-            "price": "£11.00",
-            "image": "assets/images/sock6.jpeg",
-            "discp": "Quirky novelty socks that bring fun to your feet. Made from soft, breathable fabric, these socks are perfect for expressing your personality while keeping your feet comfortable all day long.",
-            "newprice": "£8.00"
-        },
-        {
-            "title": "space shirt",
-            "price": "£22.00",
-            "image": "assets/images/shirt7.jpeg",
-            "discp": "a black T with a nice netural space theme. Breathable and durable, it pairs perfectly with any outfit for a clean, polished look.",
-            "newprice": "£16.00"
-        },
-        {
-            "title": "pin",
-            "price": "£7.50",
-            "image": "assets/images/merch2.jpeg",
-            "discp": "a great show of our pride as a uni with this high quality enamel pin. perfect for bags, jackets, hats and more!",
-            "newprice": "£5.00"
-        }
-        
     ]
 }
