@@ -149,6 +149,7 @@ class CollectionProductPage extends StatelessWidget {
                       price: item['price'],
                       image: item['image'],
                       discp: item['discp'],
+                      newprice: item['newprice'] == false ? "F" : item['newprice'].toString(),
                     ),
                     );
                   }
