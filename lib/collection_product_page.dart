@@ -90,6 +90,31 @@ class CollectionProductPage extends StatelessWidget {
                 //title
                 const SizedBox(height: 50),
                 Text(itemType.toUpperCase(), style: genHeader1),
+                
+                if (itemType.toLowerCase() == "sale") ...[
+                  const SizedBox(height: 16),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      '🔥 Limited Time Offers - Save Big! 🔥',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
+                      'Don\'t miss out on these exclusive deals!',
+                      style: genNormal,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 30),
 
                 Padding(
