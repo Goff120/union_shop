@@ -72,6 +72,7 @@ class CollectionProductPage extends StatelessWidget {
                     children: [
                       Expanded(
                         child: DropdownButton(
+                        key: const Key('filter_dropdown'),
                         hint: const Text("filter by", style: genHeader2),
                         items: const [
                           DropdownMenuItem(
@@ -103,6 +104,7 @@ class CollectionProductPage extends StatelessWidget {
                       const SizedBox(width: 16),
                       Expanded(
                         child: DropdownButton(
+                        key: const Key('sort_dropdown'),
                         hint: const Text("sort by", style: genHeader2),
                         items: const [
                           DropdownMenuItem(
