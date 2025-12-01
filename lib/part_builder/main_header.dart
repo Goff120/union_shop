@@ -94,7 +94,7 @@ class MainHeader extends StatelessWidget {
                     _navItem(context, "Home", "/"),
                     _navItem(context, "collection", "/collection"),
                     _navItem(context, "About", "/about"),
-                    _navItem(context, "Contact", "/contact"),
+                    _navItem(context, "Sale!", "/sale"),
                     const SizedBox(width: 24),
                   ],
 
