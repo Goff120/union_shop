@@ -7,13 +7,15 @@ class ProductCard extends StatelessWidget {
   final String price;
   final String image;
   final String discp;
+  final String newprice;
 
   const ProductCard({
     super.key,
     required this.title,
     required this.price,
     required this.image,
-    required this.discp
+    required this.discp,
+    required this.newprice
   });
 
 
@@ -65,10 +67,33 @@ class ProductCard extends StatelessWidget {
             maxLines: 2,
           ),
           const SizedBox(height: 4),
-          Text(
-            price,
-            style: const TextStyle(fontSize: 13, color: Colors.grey),
-          ),
+          if (newprice == "F")
+            Text(
+              price,
+              style: const TextStyle(fontSize: 13, color: Colors.grey),
+            )
+          else
+            Row(
+              children: [
+                Text(
+                  newprice,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  price,
+                  style: const TextStyle(
+                    fontSize: 13,
+                    color: Colors.red,
+                    decoration: TextDecoration.lineThrough,
+                  ),
+                ),
+              ],
+            ),
         ],
       ),
     );
