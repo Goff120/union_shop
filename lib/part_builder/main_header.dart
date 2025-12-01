@@ -26,7 +26,7 @@ class MainHeader extends StatelessWidget {
       position: const RelativeRect.fromLTRB(1000, 80, 16, 0), 
       items: const [
         PopupMenuItem(value: '/', child: Text('Home')),
-        PopupMenuItem(value: '/shop', child: Text('Shop')),
+        PopupMenuItem(value: '/collection', child: Text('Collection')),
         PopupMenuItem(value: '/print-shack', child: Text('The Print Shack')),
         PopupMenuItem(value: '/sale', child: Text('Sale!')),
         PopupMenuItem(value: '/about', child: Text('About')),
@@ -92,7 +92,7 @@ class MainHeader extends StatelessWidget {
                   // 🔵 DESKTOP NAVIGATION LINKS
                   if (!isMobile) ...[
                     _navItem(context, "Home", "/"),
-                    _navItem(context, "Products", "/products"),
+                    _navItem(context, "collection", "/collection"),
                     _navItem(context, "About", "/about"),
                     _navItem(context, "Contact", "/contact"),
                     const SizedBox(width: 24),
