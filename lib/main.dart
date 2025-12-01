@@ -30,6 +30,9 @@ class UnionShopApp extends StatelessWidget {
       routes: {
         '/about': (context) => const AboutPage(),
         '/collection': (context) => const CollectionPage(),
+        '/sale': (context) => const CollectionProductPage(
+          itemType: "sale"
+          ),
       },
       onGenerateRoute: (settings) {
         // Handle routes like /collection/socks, /collection/shirts, etc.
