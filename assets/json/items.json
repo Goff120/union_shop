@@ -79,5 +79,151 @@
             "discp": "Cozy flannel plaid shirt perfect for layering. Soft and warm, it's ideal for fall and winter while maintaining a relaxed, approachable style.",
             "newprice": "£18.00"
         }
-    ]
+    ],
+    "jeans": [
+        {
+            "title": "denim jeans",
+            "price": "£40.00",
+            "image": "assets/images/jeans1.jpeg",
+            "discp": "Classic denim jeans with a comfortable fit. Durable and stylish, they are perfect for everyday wear and can be dressed up or down.",
+            "newprice": "£30.00"
+        },
+        {
+            "title": "black skinny jeans",
+            "price": "£45.00",
+            "image": "assets/images/jeans2.jpeg",
+            "discp": "Sleek black skinny jeans that offer a modern silhouette. Made from stretch denim, they provide both comfort and style for any occasion.",
+            "newprice": "F"
+        },
+        {
+            "title": "distressed jeans",
+            "price": "£50.00",
+            "image": "assets/images/jeans3.jpeg",
+            "discp": "Trendy distressed jeans with a rugged look. Crafted from high-quality denim, they add an edgy vibe to your casual outfits.",
+            "newprice": "£35.00"
+        }
+    ],
+    "hats" : [
+        {
+            "title": "baseball cap",
+            "price": "£15.00",
+            "image": "assets/images/hat2.jpeg",
+            "discp": "Classic baseball cap with adjustable strap. Perfect for casual wear and outdoor activities, it offers both style and sun protection.",
+            "newprice": "F"
+        },
+        {
+            "title": "beanie hat",
+            "price": "£12.00",
+            "image": "assets/images/hat1.jpeg",
+            "discp": "Warm beanie hat made from soft knit fabric. Ideal for cold weather, it provides comfort and a trendy look.",
+            "newprice": "£8.00"
+        },
+        {
+            "title": "fedora hat",
+            "price": "£30.00",
+            "image": "assets/images/hat3.jpeg",
+            "discp": "Stylish fedora hat that adds a touch of sophistication to any outfit. Made from high-quality materials, it's perfect for both casual and formal occasions.",
+            "newprice": "F"
+        }
+    ],
+    "hoodie" :[
+        {
+            "title": "zip-up hoodie",
+            "price": "£35.00",
+            "image": "assets/images/hoodie1.jpeg",
+            "discp": "Comfortable zip-up hoodie made from soft fleece material. Perfect for layering, it offers warmth and style for casual outings.",
+            "newprice": "£25.00"
+        },
+        {
+            "title": "pullover hoodie",
+            "price": "£30.00",
+            "image": "assets/images/hoodie2.jpeg",
+            "discp": "Classic pullover hoodie with a kangaroo pocket. Made from durable fabric, it's ideal for everyday wear and provides a relaxed fit.",
+            "newprice": "F"
+        },
+        {
+        "title": "graphic hoodie",
+            "price": "£40.00",
+            "image": "assets/images/hoodie3.jpeg",
+            "discp": "Trendy graphic hoodie featuring a bold design. Crafted from high-quality materials, it combines comfort with a unique style statement.",
+            "newprice": "£30.00"
+        }
+    ],
+    "trousers": [
+        {
+            "title": "chino trousers",
+            "price": "£38.00",
+            "image": "assets/images/trousers1.jpeg",
+            "discp": "Versatile chino trousers made from lightweight cotton. Perfect for both casual and semi-formal occasions, they offer a comfortable fit and classic style.",
+            "newprice": "£28.00"
+        },
+        {
+            "title": "cargo trousers",
+            "price": "£42.00",
+            "image": "assets/images/trousers2.jpeg",
+            "discp": "Durable cargo trousers with multiple pockets for practicality. Made from sturdy fabric, they are ideal for outdoor activities and casual wear.",
+            "newprice": "F"
+        },
+        {
+            "title": "linen trousers",
+            "price": "£36.00",
+            "image": "assets/images/trousers3.jpeg",
+            "discp": "Lightweight linen trousers perfect for warm weather. Breathable and comfortable, they provide a relaxed fit while maintaining a stylish appearance.",
+            "newprice": "£26.00"
+        }
+    ],
+    "must_haves": [
+        {
+            "title": "pens",
+            "price": "£5.00",
+            "image": "assets/images/pen1.jpeg",
+            "discp": "this and paper and are all set to draw or write with out AI",
+            "newprice": "F"
+        },
+        {
+            "title": "diary",
+            "price": "£25.00",
+            "image": "assets/images/pen2.jpeg",
+            "discp": "you can keep track of ya day and know how many lectures you have skipped",
+            "newprice": "£18.00"
+        },
+        {
+            "title": "scrapbook",
+            "price": "£50.00",
+            "image": "assets/images/pen3.webp",
+            "discp": "what a large book to draw in",
+            "newprice": "£35.00"
+        }
+    ],
+    "merch": [
+        {
+            "title": "branded mug",
+            "price": "£12.00",
+            "image": "assets/images/merch1.jpeg",
+            "discp": "Start your day with a cup of coffee in this stylish branded mug. Made from high-quality ceramic, it's perfect for both hot and cold beverages.",
+            "newprice": "F"
+        },
+        {
+            "title": "portsmouth uni pin",
+            "price": "£5.00",
+            "image": "assets/images/merch2.jpeg",
+            "discp": "Carry your essentials in style with this durable branded tote bag. Made from eco-friendly materials, it's perfect for shopping or everyday use.",
+            "newprice": "£2.00"
+        },
+        {
+            "title": "flask cup",
+            "price": "£8.00",
+            "image": "assets/images/merch3.jpeg",
+            "discp": "Stay organized with this sleek branded notebook. Featuring a durable cover and high-quality paper, it's perfect for jotting down notes, ideas, and plans.",
+            "newprice": "F"
+        },
+        {
+            "title": "land yard",
+            "price": "£10.00",
+            "image": "assets/images/merch4.jpeg",
+            "discp": "Show your school spirit with this stylish Portsmouth University pin. Perfect for accessorizing bags, jackets, or hats, it's a great way to represent your university pride.",
+            "newprice": "£6.00"
+        }
+    ] 
+
 }
