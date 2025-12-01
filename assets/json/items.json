@@ -36,5 +36,37 @@
         "image": "assets/images/sock6.jpeg",
         "discp": "Quirky novelty socks that bring fun to your feet. Made from soft, breathable fabric, these socks are perfect for expressing your personality while keeping your feet comfortable all day long."
     }
-  ]
+  ],
+    "shirts": [
+        {
+                "title": "classic blue shirt",
+                "price": "£25.00",
+                "image": "assets/images/shirt1.jpeg",
+                "discp": "A versatile classic blue shirt perfect for any occasion. Made from premium fabric, it offers comfort and style for both casual and professional settings."
+        },
+        {
+                "title": "space shirt",
+                "price": "£22.00",
+                "image": "assets/images/shirt7.jpeg",
+                "discp": "a black T with a nice netural space theme. Breathable and durable, it pairs perfectly with any outfit for a clean, polished look."
+        },
+        {
+            "title": "oxford button-down shirt",
+            "price": "£28.00",
+            "image": "assets/images/shirt4.jpeg",
+            "discp": "Classic oxford button-down shirt with a refined finish. Perfect for business casual and weekend wear, it combines durability with timeless style."
+        },
+        {
+            "title": "linen summer shirt",
+            "price": "£26.00",
+            "image": "assets/images/shirt5.jpeg",
+            "discp": "Lightweight linen summer shirt ideal for warm weather. Breathable and comfortable, it's perfect for vacation or casual summer outings."
+        },
+        {
+            "title": "flannel plaid shirt",
+            "price": "£24.00",
+            "image": "assets/images/shirt6.jpeg",
+            "discp": "Cozy flannel plaid shirt perfect for layering. Soft and warm, it's ideal for fall and winter while maintaining a relaxed, approachable style."
+        }
+    ]
 }
