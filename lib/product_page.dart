@@ -133,6 +133,7 @@ class ProductPage extends StatelessWidget {
 
                   const SizedBox(height: 5),
                     DropdownButton(
+                    key: const Key('colour_dropdown'),
                     hint: const Text("Select Colour", style: genHeader2),
                     items: const [
                       DropdownMenuItem(
@@ -158,6 +159,7 @@ class ProductPage extends StatelessWidget {
                     children: [
                       Expanded(
                       child: DropdownButton(
+                        key: const Key('size_dropdown'),
                         hint: const Text("Select Size", style: genHeader2),
                         items: const [
                         DropdownMenuItem(
