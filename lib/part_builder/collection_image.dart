@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/collection_product_page.dart';
 
 class CollectionImage extends StatelessWidget {
   final String imageUrl;
@@ -21,14 +20,7 @@ class CollectionImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-          builder: (context) => CollectionProductPage(
-            itemType: routeName, 
-          ),
-        )
-        );
+        Navigator.pushNamed(context, '/collection/$routeName');
       },
       child: SizedBox(
         width: width,
