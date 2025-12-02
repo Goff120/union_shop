@@ -54,6 +54,7 @@ class CartPage extends StatelessWidget {
                     final item = entry.value;
                     return CartProduct(
                       key: ValueKey(productId),
+                      productId: productId,
                       imageUrl: item.imageUrl,
                       title: item.name,
                       price: item.price,
