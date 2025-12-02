@@ -47,7 +47,7 @@ class CollectionPage extends StatelessWidget {
               CollectionImage(
                 imageUrl: 'assets/images/well_hot_hoodie.jpeg',
                 text: 'Winter Sales',
-                routeName: 'winter-collection',
+                routeName: 'Winter Sales',
                 width: 350,
                 height: 250,
               ),
@@ -82,7 +82,7 @@ class CollectionPage extends StatelessWidget {
               CollectionImage(
                 imageUrl: 'assets/images/pen1.jpeg',
                 text: 'get the must haves',
-                routeName: 'must_have',
+                routeName: 'get the must haves',
                 width: 350,
                 height: 250,
               ),
