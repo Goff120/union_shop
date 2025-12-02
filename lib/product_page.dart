@@ -10,7 +10,10 @@ class ProductPage extends StatelessWidget {
   final String price;
   final String discp;
 
-  const ProductPage({
+  // Map to record user selections (mutable even in a StatelessWidget)
+  final Map<String, dynamic> selections = {};
+
+  ProductPage({
     Key? key,
     required this.image,
     required this.title,
@@ -22,16 +25,18 @@ class ProductPage extends StatelessWidget {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
-  void sizeCallBack(int? size) {
-    print(size);
+  void selectionCallBack(int? selection) {
+    selections['first'] = selection;
   }
 
-  void colourCallBack(int? colour) {
-    print(colour);
+  void selectionCallBack2(int? selection) {
+    selections['second'] = selection;
   }
 
   void addToCart() {
-    print("ADD to cart"); 
+    // Use the selections map when adding to cart
+    // ignore: avoid_print
+    print('Adding to cart with selections: $selections');
   }
 
   @override
@@ -149,7 +154,7 @@ class ProductPage extends StatelessWidget {
                       child: Text("Purple"),
                       ),
                     ],
-                    onChanged: sizeCallBack,
+                    onChanged: selectionCallBack,
                     isExpanded: true,
                     underline: Container(height: 3, color: Colors.black),
                     ),
@@ -179,7 +184,7 @@ class ProductPage extends StatelessWidget {
                           child: Text("XLarge"),
                         ),
                         ],
-                        onChanged: sizeCallBack,
+                        onChanged: selectionCallBack2,
                         isExpanded: true,
                         underline: Container(height: 2, color: Colors.black),
                       ),
