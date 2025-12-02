@@ -107,21 +107,21 @@
         {
             "title": "baseball cap",
             "price": "£15.00",
-            "image": "assets/images/hat2.jpeg",
+            "image": "assets/images/hat1.jpeg",
             "discp": "Classic baseball cap with adjustable strap. Perfect for casual wear and outdoor activities, it offers both style and sun protection.",
             "newprice": "F"
         },
         {
             "title": "beanie hat",
             "price": "£12.00",
-            "image": "assets/images/hat1.jpeg",
+            "image": "assets/images/hat4.jpeg",
             "discp": "Warm beanie hat made from soft knit fabric. Ideal for cold weather, it provides comfort and a trendy look.",
             "newprice": "£8.00"
         },
         {
             "title": "fedora hat",
             "price": "£30.00",
-            "image": "assets/images/hat3.jpeg",
+            "image": "assets/images/hat3.webp",
             "discp": "Stylish fedora hat that adds a touch of sophistication to any outfit. Made from high-quality materials, it's perfect for both casual and formal occasions.",
             "newprice": "F"
         }
@@ -160,14 +160,14 @@
         {
             "title": "cargo trousers",
             "price": "£42.00",
-            "image": "assets/images/trousers2.jpeg",
+            "image": "assets/images/trousers2.webp",
             "discp": "Durable cargo trousers with multiple pockets for practicality. Made from sturdy fabric, they are ideal for outdoor activities and casual wear.",
             "newprice": "F"
         },
         {
             "title": "linen trousers",
             "price": "£36.00",
-            "image": "assets/images/trousers3.jpeg",
+            "image": "assets/images/trouser3.jpeg",
             "discp": "Lightweight linen trousers perfect for warm weather. Breathable and comfortable, they provide a relaxed fit while maintaining a stylish appearance.",
             "newprice": "£26.00"
         }
@@ -209,21 +209,37 @@
             "image": "assets/images/merch2.jpeg",
             "discp": "Carry your essentials in style with this durable branded tote bag. Made from eco-friendly materials, it's perfect for shopping or everyday use.",
             "newprice": "£2.00"
-        },
+        }
+    ],
+    "pride" :[
         {
-            "title": "flask cup",
-            "price": "£8.00",
-            "image": "assets/images/merch3.jpeg",
-            "discp": "Stay organized with this sleek branded notebook. Featuring a durable cover and high-quality paper, it's perfect for jotting down notes, ideas, and plans.",
+            "title": "pride",
+            "price": "£25.00",
+            "image": "assets/images/pride1.jpeg",
+            "discp": "show the uni just how mcuh we care for all with this pride themed hoodie",
             "newprice": "F"
         },
         {
-            "title": "land yard",
+            "title": "flag",
             "price": "£10.00",
-            "image": "assets/images/merch4.jpeg",
-            "discp": "Show your school spirit with this stylish Portsmouth University pin. Perfect for accessorizing bags, jackets, or hats, it's a great way to represent your university pride.",
-            "newprice": "£6.00"
+            "image": "assets/images/pride2.jpeg",
+            "discp": "hang in your room or outside your window to show your true colours",
+            "newprice": "£7.00"
+        },
+        {
+            "title": "frog pride pin",
+            "price": "£9.00",
+            "image": "assets/images/pride3.webp",
+            "discp": "walk with pride loving frog",
+            "newprice": "F"
+        },
+        {
+            "title": "pride pin",
+            "price": "£12.00",
+            "image": "assets/images/pride4.webp",
+            "discp": "we can keep it simple and still be powerful",
+            "newprice": "£8.00"
         }
-    ] 
+    ]
 
 }
