@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:union_shop/logic/cart.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/styles/genral_text.dart';
 
-class CollectionPage extends StatelessWidget {
-  const CollectionPage({super.key});
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -39,6 +41,21 @@ class CollectionPage extends StatelessWidget {
               child: const Text('Continue shopping'),
             ),
             const SizedBox(height: 12),
+            Consumer<Cart>(
+              builder: (context, cart, child) {
+                // cart.items - all items
+                // cart.totalPrice - total price
+                // cart.totalQuantity - total quantity
+                // cart.itemCount - number of different items
+                
+                return Column(
+                  children: cart.items.entries.map((entry) {
+                    final item = entry.value;
+                    return Text('${item.name} - ${item.price} x ${item.quantity}');
+                  }).toList(),
+                );
+              },
+            ),
 
             // Footer
             const Footer(),
