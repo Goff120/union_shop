@@ -44,7 +44,7 @@ class ProductPage extends StatelessWidget {
     // Create a unique ID based on title and selections
     final id = '$title-${selections['colour']}-${selections['size']}';
     
-    cart.addItem(id, image, title, price, quantity,selection['colour'],selections['size']);
+    cart.addItem(id, image, title, price, quantity,selections['colour'],selections['size']);
     
     // Show confirmation
     ScaffoldMessenger.of(context).showSnackBar(
