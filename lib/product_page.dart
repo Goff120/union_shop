@@ -7,17 +7,13 @@ import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/part_builder/styled_button.dart';
 import 'package:union_shop/styles/genral_text.dart';
 
-class ProductPage extends StatelessWidget {
+class ProductPage extends StatefulWidget {
   final String image;
   final String title;
   final String price;
   final String discp;
 
-
-  final Map<String, dynamic> selections = {};
-  final TextEditingController quantityController = TextEditingController();
-
-  ProductPage({
+  const ProductPage({
     Key? key,
     required this.image,
     required this.title,
@@ -25,31 +21,62 @@ class ProductPage extends StatelessWidget {
     required this.discp,
   }) : super(key: key);
 
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
+  final Map<String, dynamic> selections = {};
+  final TextEditingController quantityController = TextEditingController();
+  
+  String? selectedColour;
+  String? selectedSize;
+
+  @override
+  void initState() {
+    super.initState();
+    // Pre-select default values
+    selectedColour = 'Blue';
+    selectedSize = 'M';
+    selections['colour'] = selectedColour;
+    selections['size'] = selectedSize;
+  }
+
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
   void colourCallBack(String? selection) {
-    selections['colour'] = selection;
+    setState(() {
+      selectedColour = selection;
+      selections['colour'] = selection;
+    });
   }
 
   void sizeCallBack2(String? selection) {
-    selections['size'] = selection;
+    setState(() {
+      selectedSize = selection;
+      selections['size'] = selection;
+    });
   }
 
   void addToCart(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
     final quantity = int.tryParse(quantityController.text) ?? 1;
     
-    // Create a unique ID based on title and selections
-    final id = '$title-${selections['colour']}-${selections['size']}';
+    // Get colour and size with fallback to "F" if not selected
+    final colour = selections['colour']?.toString() ?? 'F';
+    final size = selections['size']?.toString() ?? 'F';
     
-    cart.addItem(id, image, title, price, quantity,selections['colour'],selections['size']);
+    // Create a unique ID based on title and selections
+    final id = '${widget.title}-$colour-$size';
+    
+    cart.addItem(id, widget.image, widget.title, widget.price, quantity, colour, size);
     
     // Show confirmation
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Added $quantity x $title to cart'),
+        content: Text('Added $quantity x ${widget.title} to cart'),
         duration: const Duration(seconds: 2),
       ),
     );
@@ -91,7 +118,7 @@ class ProductPage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.asset(
-                        image,
+                        widget.image,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
@@ -123,7 +150,7 @@ class ProductPage extends StatelessWidget {
 
                   // Product name
                   Text(
-                    title,
+                    widget.title,
                     style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -135,7 +162,7 @@ class ProductPage extends StatelessWidget {
 
                   // Product price
                   Text(
-                    price,
+                    widget.price,
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -148,13 +175,14 @@ class ProductPage extends StatelessWidget {
                   // Product description
                   const Text('Description', style: genHeader2),
                   const SizedBox(height: 8),
-                  Text(discp, style: genNormal),
+                  Text(widget.discp, style: genNormal),
                   const SizedBox(height: 14),
                   const Text('Purchase', style: genHeader2),
 
                   const SizedBox(height: 5),
-                    DropdownButton(
+                    DropdownButton<String>(
                     key: const Key('colour_dropdown'),
+                    value: selectedColour,
                     hint: const Text("Select Colour", style: genHeader2),
                     items: const [
                       DropdownMenuItem(
@@ -179,8 +207,9 @@ class ProductPage extends StatelessWidget {
                     Row(
                     children: [
                       Expanded(
-                      child: DropdownButton(
+                      child: DropdownButton<String>(
                         key: const Key('size_dropdown'),
+                        value: selectedSize,
                         hint: const Text("Select Size", style: genHeader2),
                         items: const [
                         DropdownMenuItem(
