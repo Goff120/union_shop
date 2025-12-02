@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/cart_page.dart';
 import 'package:union_shop/sign_up_page.dart';
 
 class MainHeader extends StatelessWidget {
@@ -16,8 +17,12 @@ class MainHeader extends StatelessWidget {
   );
   }
 
-  void onBagTap() {
-    // This is the event handler for buttons that don't work yet
+  void onBagTap(BuildContext context) {
+    Navigator.of(context).push(
+    MaterialPageRoute<void>(
+      builder: (context) => const CartPage(),
+    ),
+  );
   }
 
     void onMenuTap(BuildContext context) async {
@@ -133,7 +138,7 @@ class MainHeader extends StatelessWidget {
                             minWidth: 32,
                             minHeight: 32,
                           ),
-                          onPressed: onBagTap,
+                          onPressed: () => onBagTap(context),
                         ),
                         if (isMobile) 
                         IconButton(
