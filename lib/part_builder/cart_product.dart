@@ -54,11 +54,16 @@ class CartProduct extends StatelessWidget {
           Column(
             children: [
               Text(title, style: genHeader1),
-              if (size != "F")
+              if (size != "F") ...[
+                 Text("size: $size", style: genNormal), 
+              ],
+              if (colour != "F") ...[
+                 Text("colour: $colour", style: genNormal), 
+              ]
             ],
           ),
           const SizedBox(height: 8),
-          // Row 3: quantity
+          
           const Column(
             children: [
               
