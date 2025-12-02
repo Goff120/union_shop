@@ -30,49 +30,49 @@ class CartProduct extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 4)],
       ),
+      
       child: Row(
         mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            children: [
-              Image.asset(
-                imageUrl,
-                fit: BoxFit.cover,
+          Image.asset(
+            imageUrl,
+            fit: BoxFit.cover,
+            width: 100,
+            height: 100,
+            errorBuilder: (context, error, stackTrace) {
+              return Container(
                 width: 100,
-                height: 50,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: Colors.grey[300],
-                    child: const Center(
-                      child: Icon(Icons.image_not_supported, color: Colors.grey),
-                    ),
-                  );
-                },
-              ),
-            ],
+                height: 100,
+                color: Colors.grey[300],
+                child: const Center(
+                  child: Icon(Icons.image_not_supported, color: Colors.grey),
+                ),
+              );
+            },
           ),
-          const SizedBox(height: 8),
-          // Row 2: price
-          Column(
-            children: [
-              Text(title, style: cartHeader2),
-              if (size != "F") ...[
-                 Text("size: $size", style: cartNormal), 
-              ],
-              if (colour != "F") ...[
-                 Text("colour: $colour", style: cartNormal), 
-              ]
-            ],
-          ),
-          const SizedBox(height: 8),
+          const SizedBox(width: 16),
           
-          Column(
-            children: [
-              Text(price, style: cartHeader2)
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: cartHeader1),
+                if (size != "F") ...[
+                  Text("Size: $size", style: cartNormal), 
+                ],
+                if (colour != "F") ...[
+                  Text("Colour: $colour", style: cartNormal), 
+                ],
+              ],
+            ),
           ),
+          const SizedBox(width: 16),
+          
+          Text(price, style: cartHeader1),
         ],
       ),
+
     );
   }
 }
