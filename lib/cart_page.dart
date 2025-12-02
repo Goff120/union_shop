@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:union_shop/logic/cart.dart';
+import 'package:union_shop/part_builder/cart_product.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/part_builder/styled_button.dart';
@@ -47,16 +48,19 @@ class CartPage extends StatelessWidget {
             const SizedBox(height: 12),
             Consumer<Cart>(
               builder: (context, cart, child) {
-                // cart.items - all items
-                // cart.totalPrice - total price
-                // cart.totalQuantity - total quantity
-                // cart.itemCount - number of different items
-
                 return Column(
                   children: cart.items.entries.map((entry) {
+                    final productId = entry.key;
                     final item = entry.value;
-                    return Text(
-                        '${item.name} - ${item.price} x ${item.quantity}');
+                    return CartProduct(
+                      key: ValueKey(productId),
+                      imageUrl: item.imageUrl,
+                      title: item.name,
+                      price: item.price,
+                      quantity: item.quantity,
+                      colour: item.colour,
+                      size: item.size,
+                    );
                   }).toList(),
                 );
               },
