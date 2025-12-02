@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:union_shop/about_page.dart';
+import 'package:union_shop/cart_page.dart';
 import 'package:union_shop/collection.dart';
 import 'package:union_shop/collection_product_page.dart';
 
@@ -33,6 +34,7 @@ class UnionShopApp extends StatelessWidget {
         '/sale': (context) => const CollectionProductPage(
           itemType: "sale"
           ),
+        '/cart' : (context) => const CartPage(),
       },
       onGenerateRoute: (settings) {
         // Handle routes like /collection/socks, /collection/shirts, etc.
