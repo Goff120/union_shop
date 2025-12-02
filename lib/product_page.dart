@@ -35,7 +35,6 @@ class _ProductPageState extends State<ProductPage> {
   @override
   void initState() {
     super.initState();
-    // Pre-select default values
     selectedColour = 'Blue';
     selectedSize = 'M';
     selections['colour'] = selectedColour;
