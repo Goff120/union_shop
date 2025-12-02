@@ -40,55 +40,47 @@ class CollectionPage extends StatelessWidget {
               CollectionImage(
                 imageUrl: 'assets/images/sock3.jpeg',
                 text: 'SOCKS',
-                routeName: 'socks',
 
               ),
               CollectionImage(
                 imageUrl: 'assets/images/well_hot_hoodie.jpeg',
                 text: 'Winter Sales',
-                routeName: 'Winter Sales',
 
               ),
               CollectionImage(
                 imageUrl: 'assets/images/shirt1.jpeg',
                 text: 'shirts',
-                routeName: 'shirts',
 
               ),
               CollectionImage(
                 imageUrl: 'assets/images/hat1.jpeg',
                 text: 'hats',
-                routeName: 'hats',
 
               ),
               CollectionImage(
                 imageUrl: 'assets/images/trousers1.jpeg',
                 text: 'trousers',
-                routeName: 'trousers',
 
               ),
               CollectionImage(
                 imageUrl: 'assets/images/hoodie1.jpeg',
                 text: 'hoodie',
-                routeName: 'hoodie',
+
 
               ),
               CollectionImage(
                 imageUrl: 'assets/images/pen1.jpeg',
                 text: 'get the must haves',
-                routeName: 'get the must haves',
 
               ),
               CollectionImage(
                 imageUrl: 'assets/images/merch1.jpeg',
                 text: 'merch',
-                routeName: 'merch',
 
               ),
               CollectionImage(
                 imageUrl: 'assets/images/pride1.jpeg',
                 text: 'our pride',
-                routeName: 'pride',
 
               ),
 

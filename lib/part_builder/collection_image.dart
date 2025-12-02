@@ -3,21 +3,19 @@ import 'package:flutter/material.dart';
 class CollectionImage extends StatelessWidget {
   final String imageUrl;
   final String text;
-  final String routeName;
 
 
   const CollectionImage({
     super.key,
     required this.imageUrl,
     required this.text,
-    required this.routeName,
   });
  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/collection/$routeName');
+        Navigator.pushNamed(context, '/collection/$text');
       },
       child: SizedBox(
         width: 350,
