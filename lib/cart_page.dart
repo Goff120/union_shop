@@ -57,6 +57,26 @@ class CartPage extends StatelessWidget {
               },
             ),
 
+            const SizedBox(height: 12),
+            const Text("add a note to your order", style: genHeader2),
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: TextField(
+              maxLines: 2,
+              keyboardType: TextInputType.multiline,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Add a note to your order (e.g. delivery instructions)',
+                labelText: 'Order note',
+              ),
+              onChanged: (value) {
+              },
+              ),
+            ),
+
+
+
             // Footer
             const Footer(),
           ],
