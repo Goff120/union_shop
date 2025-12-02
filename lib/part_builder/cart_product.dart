@@ -86,12 +86,39 @@ class CartProduct extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 8),
-          StyledButton(
-            key: const Key('remove_button'),
-            onPressed: () => remove(context),
-            label: 'Remove',
-            backgroundColor: const Color.fromARGB(255, 190, 76, 76),
-          ),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children:[
+            const SizedBox(height: 8),
+            StyledButton(
+              key: const Key('remove_button'),
+              onPressed: () => remove(context),
+              label: 'Remove',
+              backgroundColor: const Color.fromARGB(255, 190, 76, 76),
+            ),
+            Expanded(
+              child: TextField(
+                controller: TextEditingController(text: quantity.toString()),
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter amount',
+                ),
+                onSubmitted: (value) {
+                  final newQty = int.tryParse(value) ?? quantity;
+                  final cart = Provider.of<Cart>(context, listen: false);
+                  if (newQty <= 0) {
+                    cart.removeItem(productId);
+                  } else {
+                    // Adjust this method name to match your Cart API if different:
+                    cart.updateQuantity(productId, newQty);
+                  }
+                },
+              ),
+            ),
+            ]
+          )
         ],
       ),
     );
