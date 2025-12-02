@@ -22,6 +22,11 @@ class CartItem {
     };
   }
 
+  double getTotalPrice() {
+    final priceValue = double.tryParse(price.replaceAll('£', '')) ?? 0.0;
+    return priceValue * quantity;
+  }
+
 }
 class Cart extends ChangeNotifier {
   final Map<String, CartItem> _items = {};
