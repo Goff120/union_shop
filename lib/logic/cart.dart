@@ -13,6 +13,15 @@ class CartItem {
     required this.quantity,
   });
 
+  Map<String, dynamic> toMap() {
+    return {
+      'imageUrl': imageUrl,
+      'name': name,
+      'price': price,
+      'quantity': quantity,
+    };
+  }
+
 }
 class Cart extends ChangeNotifier {
   final Map<String, CartItem> _items = {};
