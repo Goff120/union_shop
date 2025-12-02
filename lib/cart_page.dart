@@ -15,7 +15,7 @@ class CartPage extends StatelessWidget {
 
   void removeall(BuildContext context) {
     final cart = Provider.of<Cart>(context, listen: false);
-    cart.items.clear();
+    cart.clear();
   }
 
   @override
