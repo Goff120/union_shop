@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:union_shop/styles/genral_text.dart';
 
 class CartProduct extends StatelessWidget {
-  final String id;
   final String imageUrl;
   final String title;
   final String price;
   final int quantity;
+  final String colour;
+  final String size;
 
-  const CartProduct({
-    super.key,
-    required this.id,
+  const CartProduct({super.key, 
     required this.imageUrl,
     required this.title,
     required this.price,
     required this.quantity,
+    required this.colour,
+    required this.size,
   });
 
   @override
@@ -53,6 +54,7 @@ class CartProduct extends StatelessWidget {
           Column(
             children: [
               Text(title, style: genHeader1),
+              if (size != "F")
             ],
           ),
           const SizedBox(height: 8),
