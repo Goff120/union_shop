@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:union_shop/logic/cart.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/part_builder/styled_button.dart';
@@ -11,10 +13,8 @@ class ProductPage extends StatelessWidget {
   final String price;
   final String discp;
 
-  // Map to record user selections (mutable even in a StatelessWidget)
+
   final Map<String, dynamic> selections = {};
-  
-  // Controller to get quantity value
   final TextEditingController quantityController = TextEditingController();
 
   ProductPage({
@@ -37,20 +37,22 @@ class ProductPage extends StatelessWidget {
     selections['second'] = selection;
   }
 
-  void addToCart() {
-    // Get quantity from text field
+  void addToCart(BuildContext context) {
+    final cart = Provider.of<Cart>(context, listen: false);
     final quantity = int.tryParse(quantityController.text) ?? 1;
     
-    Map<String, dynamic> toMap() {
-      return {
-        'imageUrl': image,
-        'name': title,
-        'price': price,
-        'quantity': quantity,
-      };
-    }
+    // Create a unique ID based on title and selections
+    final id = '$title-${selections['colour']}-${selections['size']}';
     
-    print('Added to cart: ${toMap()}');
+    cart.addItem(id, image, title, price, quantity);
+    
+    // Show confirmation
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Added $quantity x $title to cart'),
+        duration: const Duration(seconds: 2),
+      ),
+    );
   }
 
   @override
@@ -221,11 +223,25 @@ class ProductPage extends StatelessWidget {
                   ),
                 const SizedBox(height: 12),
                 StyledButton(
-                key: const Key('add_to_cart_button'),
-                onPressed: addToCart,
-                label: 'Add to Cart',
-                backgroundColor: const Color.fromARGB(255, 140, 76, 190),
-              ),
+                  key: const Key('add_to_cart_button'),
+                  onPressed: () => addToCart(context),
+                  label: 'Add to Cart',
+                  backgroundColor: const Color.fromARGB(255, 140, 76, 190),
+                ),
+                const SizedBox(height: 12),
+                
+                // Show cart count
+                Consumer<Cart>(
+                  builder: (context, cart, child) {
+                    return Text(
+                      'Items in cart: ${cart.totalQuantity}',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    );
+                  },
+                ),
               const SizedBox(height: 12),
                 ],
               ),
