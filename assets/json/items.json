@@ -80,29 +80,6 @@
             "newprice": "£18.00"
         }
     ],
-    "jeans": [
-        {
-            "title": "denim jeans",
-            "price": "£40.00",
-            "image": "assets/images/jeans1.jpeg",
-            "discp": "Classic denim jeans with a comfortable fit. Durable and stylish, they are perfect for everyday wear and can be dressed up or down.",
-            "newprice": "£30.00"
-        },
-        {
-            "title": "black skinny jeans",
-            "price": "£45.00",
-            "image": "assets/images/jeans2.jpeg",
-            "discp": "Sleek black skinny jeans that offer a modern silhouette. Made from stretch denim, they provide both comfort and style for any occasion.",
-            "newprice": "F"
-        },
-        {
-            "title": "distressed jeans",
-            "price": "£50.00",
-            "image": "assets/images/jeans3.jpeg",
-            "discp": "Trendy distressed jeans with a rugged look. Crafted from high-quality denim, they add an edgy vibe to your casual outfits.",
-            "newprice": "£35.00"
-        }
-    ],
     "hats" : [
         {
             "title": "baseball cap",
@@ -160,19 +137,19 @@
         {
             "title": "cargo trousers",
             "price": "£42.00",
-            "image": "assets/images/trousers2.webp",
+            "image": "assets/images/trousers2.jpeg",
             "discp": "Durable cargo trousers with multiple pockets for practicality. Made from sturdy fabric, they are ideal for outdoor activities and casual wear.",
             "newprice": "F"
         },
         {
             "title": "linen trousers",
             "price": "£36.00",
-            "image": "assets/images/trouser3.jpeg",
+            "image": "assets/images/trousers3.jpeg",
             "discp": "Lightweight linen trousers perfect for warm weather. Breathable and comfortable, they provide a relaxed fit while maintaining a stylish appearance.",
             "newprice": "£26.00"
         }
     ],
-    "must_haves": [
+    "get the must haves": [
         {
             "title": "pens",
             "price": "£5.00",
@@ -239,6 +216,36 @@
             "image": "assets/images/pride4.webp",
             "discp": "we can keep it simple and still be powerful",
             "newprice": "£8.00"
+        }
+    ],
+    "winter sales": [
+        {
+        "title": "chrismans hat",
+        "price": "£3.00",
+        "image": "assets/images/chrismas1.jpeg",
+        "discp": "stay warm this winter with this cozy scarf and glove set. perfect for chilly days and stylish looks.",
+        "newprice": "£2.00"
+    },
+    {
+        "title": "gloves",
+        "price": "£20.00",
+        "image": "assets/images/gloves.webp",
+        "discp": "stay warm",
+        "newprice": "£15.00"
+        },
+        {
+        "title": "a great hoodie",
+        "price": "£15.00",
+        "image": "assets/images/well_hot_hoodie.jpeg",
+        "discp": "stay warm",
+        "newprice": "£10.00"
+        },
+        {
+        "title": "full heat bring coolection",
+        "price": "£100.00",
+        "image": "assets/images/winter sale.webp",
+        "discp": "stay warm",
+        "newprice": "£85.00"
         }
     ]
 
