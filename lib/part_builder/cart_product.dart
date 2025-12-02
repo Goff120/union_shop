@@ -51,7 +51,9 @@ class CartProduct extends StatelessWidget {
           const SizedBox(height: 8),
           // Row 2: price
           Column(
-            
+            children: [
+              Text(title, style: genHeader1),
+            ],
           ),
           const SizedBox(height: 8),
           // Row 3: quantity
