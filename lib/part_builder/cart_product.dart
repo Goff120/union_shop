@@ -64,9 +64,9 @@ class CartProduct extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           
-          const Column(
+          Column(
             children: [
-              
+              Text(price, style: genHeader1)
             ],
           ),
         ],
