@@ -1,5 +1,5 @@
 {
-  "socks": [
+  "SOCKS": [
     {
         "title": "rainbow socks",
         "price": "£9.00",
@@ -218,7 +218,7 @@
             "newprice": "£8.00"
         }
     ],
-    "winter sales": [
+    "Winter Sales": [
         {
         "title": "chrismans hat",
         "price": "£3.00",
