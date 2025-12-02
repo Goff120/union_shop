@@ -38,9 +38,19 @@ class ProductPage extends StatelessWidget {
   }
 
   void addToCart() {
-    // Use the selections map when adding to cart
-    // ignore: avoid_print
-    print('Adding to cart with selections: $selections');
+    // Get quantity from text field
+    final quantity = int.tryParse(quantityController.text) ?? 1;
+    
+    Map<String, dynamic> toMap() {
+      return {
+        'imageUrl': image,
+        'name': title,
+        'price': price,
+        'quantity': quantity,
+      };
+    }
+    
+    print('Added to cart: ${toMap()}');
   }
 
   @override
