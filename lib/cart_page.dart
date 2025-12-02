@@ -76,6 +76,12 @@ class CartPage extends StatelessWidget {
             ),
 
 
+            Consumer<Cart>(
+              builder: (context, cart, child) {
+                return Text("Subtotal: £${cart.totalPrice}", style: genHeader2);
+              },
+            ),
+
 
             // Footer
             const Footer(),
