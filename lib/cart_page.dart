@@ -31,9 +31,13 @@ class CollectionPage extends StatelessWidget {
             //header end
 
 
+
             const SizedBox(height: 50),
             const Text("your cart", style: genHeader1),
-            
+            TextButton(
+              onPressed: () => Navigator.pushNamed(context, '/collection'),
+              child: const Text('Continue shopping'),
+            ),
             const SizedBox(height: 12),
 
             // Footer
