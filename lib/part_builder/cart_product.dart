@@ -31,7 +31,22 @@ class CartProduct extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Column(
-            
+            children: [
+              Image.asset(
+                imageUrl,
+                fit: BoxFit.cover,
+                width: 100,
+                height: 50,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    color: Colors.grey[300],
+                    child: const Center(
+                      child: Icon(Icons.image_not_supported, color: Colors.grey),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
           const SizedBox(height: 8),
           // Row 2: price
