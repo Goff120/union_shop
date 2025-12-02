@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:union_shop/logic/cart.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
+import 'package:union_shop/part_builder/styled_button.dart';
 import 'package:union_shop/styles/genral_text.dart';
 
 class CartPage extends StatelessWidget {
@@ -10,6 +11,10 @@ class CartPage extends StatelessWidget {
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+  }
+
+  void removeall(BuildContext context) {
+    
   }
 
   @override
@@ -78,11 +83,21 @@ class CartPage extends StatelessWidget {
             const SizedBox(height: 8),
             Consumer<Cart>(
               builder: (context, cart, child) {
-                return Text("Subtotal: £${cart.totalPrice}", style: genHeader2);
+                return Text("Subtotal: £${cart.totalPrice.toStringAsFixed(2)}", style: genHeader2);
               },
             ),
             const SizedBox(height: 8),
             const Text("include Tax and shipping is calculated at checkout", style: genNormal),
+            const SizedBox(height: 12),
+
+            StyledButton(
+              key: const Key('check_out'),
+              onPressed: () => removeall(context),
+              label: 'CHECK OUT',
+              backgroundColor: const Color.fromARGB(255, 140, 76, 190),
+            ),
+
+            const SizedBox(height: 50),
 
             // Footer
             const Footer(),
