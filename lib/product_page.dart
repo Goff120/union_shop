@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/part_builder/styled_button.dart';
@@ -12,6 +13,9 @@ class ProductPage extends StatelessWidget {
 
   // Map to record user selections (mutable even in a StatelessWidget)
   final Map<String, dynamic> selections = {};
+  
+  // Controller to get quantity value
+  final TextEditingController quantityController = TextEditingController();
 
   ProductPage({
     Key? key,
@@ -190,9 +194,14 @@ class ProductPage extends StatelessWidget {
                       ),
                       ),
                       const SizedBox(width: 12),
-                      const Expanded(
+                      Expanded(
                         child: TextField(
-                          decoration: InputDecoration(
+                          controller: quantityController,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             hintText: 'Enter amount',
                           ),
