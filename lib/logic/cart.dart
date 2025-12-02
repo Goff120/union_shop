@@ -45,6 +45,11 @@ class Cart extends ChangeNotifier {
     notifyListeners(); //re build page
   }
 
+  void removeItem(String id) {
+    _items.remove(id);
+    notifyListeners();
+  }
+
   void clear() {
     _items.clear();
     notifyListeners();
