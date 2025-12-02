@@ -45,6 +45,17 @@ class Cart extends ChangeNotifier {
     notifyListeners(); //re build page
   }
 
+  void updateQuantity(String id, int newQuantity) {
+    if (_items.containsKey(id)) {
+      if (newQuantity <= 0) {
+        removeItem(id);
+      } else {
+        _items[id]!.quantity = newQuantity;
+        notifyListeners();
+      }
+    }
+  }
+
   void removeItem(String id) {
     _items.remove(id);
     notifyListeners();
