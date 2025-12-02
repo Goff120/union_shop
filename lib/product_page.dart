@@ -29,11 +29,11 @@ class ProductPage extends StatelessWidget {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
-  void colourCallBack(int? selection) {
+  void colourCallBack(String? selection) {
     selections['colour'] = selection;
   }
 
-  void sizeCallBack2(int? selection) {
+  void sizeCallBack2(String? selection) {
     selections['size'] = selection;
   }
 
@@ -44,7 +44,7 @@ class ProductPage extends StatelessWidget {
     // Create a unique ID based on title and selections
     final id = '$title-${selections['colour']}-${selections['size']}';
     
-    cart.addItem(id, image, title, price, quantity);
+    cart.addItem(id, image, title, price, quantity,selection['colour'],selections['size']);
     
     // Show confirmation
     ScaffoldMessenger.of(context).showSnackBar(
@@ -158,15 +158,15 @@ class ProductPage extends StatelessWidget {
                     hint: const Text("Select Colour", style: genHeader2),
                     items: const [
                       DropdownMenuItem(
-                      value: 1,
+                      value: "Blue",
                       child: Text("Blue"),
                       ),
                       DropdownMenuItem(
-                      value: 2,
+                      value: "Red",
                       child: Text("Red"),
                       ),
                       DropdownMenuItem(
-                      value: 3,
+                      value: "Purple",
                       child: Text("Purple"),
                       ),
                     ],
@@ -184,19 +184,19 @@ class ProductPage extends StatelessWidget {
                         hint: const Text("Select Size", style: genHeader2),
                         items: const [
                         DropdownMenuItem(
-                          value: 1,
+                          value: "S",
                           child: Text("Small"),
                         ),
                         DropdownMenuItem(
-                          value: 2,
+                          value: "M",
                           child: Text("Medium"),
                         ),
                         DropdownMenuItem(
-                          value: 3,
+                          value: "L",
                           child: Text("Large"),
                         ),
                         DropdownMenuItem(
-                          value: 4,
+                          value: "XL",
                           child: Text("XLarge"),
                         ),
                         ],
