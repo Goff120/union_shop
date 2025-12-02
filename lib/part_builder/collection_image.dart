@@ -4,16 +4,13 @@ class CollectionImage extends StatelessWidget {
   final String imageUrl;
   final String text;
   final String routeName;
-  final double width;
-  final double height;
+
 
   const CollectionImage({
     super.key,
     required this.imageUrl,
     required this.text,
     required this.routeName,
-    this.width = 200,
-    this.height = 200,
   });
  
   @override
@@ -23,8 +20,8 @@ class CollectionImage extends StatelessWidget {
         Navigator.pushNamed(context, '/collection/$routeName');
       },
       child: SizedBox(
-        width: width,
-        height: height,
+        width: 350,
+        height: 250,
         child: Stack(
           fit: StackFit.expand,
           children: [
