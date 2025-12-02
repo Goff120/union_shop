@@ -29,12 +29,12 @@ class ProductPage extends StatelessWidget {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
 
-  void selectionCallBack(int? selection) {
-    selections['first'] = selection;
+  void colourCallBack(int? selection) {
+    selections['colour'] = selection;
   }
 
-  void selectionCallBack2(int? selection) {
-    selections['second'] = selection;
+  void sizeCallBack2(int? selection) {
+    selections['size'] = selection;
   }
 
   void addToCart(BuildContext context) {
@@ -170,7 +170,7 @@ class ProductPage extends StatelessWidget {
                       child: Text("Purple"),
                       ),
                     ],
-                    onChanged: selectionCallBack,
+                    onChanged: colourCallBack,
                     isExpanded: true,
                     underline: Container(height: 3, color: Colors.black),
                     ),
@@ -200,7 +200,7 @@ class ProductPage extends StatelessWidget {
                           child: Text("XLarge"),
                         ),
                         ],
-                        onChanged: selectionCallBack2,
+                        onChanged: sizeCallBack2,
                         isExpanded: true,
                         underline: Container(height: 2, color: Colors.black),
                       ),
