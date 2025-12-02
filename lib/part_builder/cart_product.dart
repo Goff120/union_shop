@@ -111,7 +111,6 @@ class CartProduct extends StatelessWidget {
                   if (newQty <= 0) {
                     cart.removeItem(productId);
                   } else {
-                    // Adjust this method name to match your Cart API if different:
                     cart.updateQuantity(productId, newQty);
                   }
                 },
