@@ -30,4 +30,9 @@ class Cart extends ChangeNotifier {
     }
     notifyListeners(); //re build page
   }
+
+  void clear() {
+    _items.clear();
+    notifyListeners();
+  }
 }
