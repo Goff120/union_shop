@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:union_shop/about_page.dart';
 import 'package:union_shop/cart_page.dart';
 import 'package:union_shop/collection.dart';
 import 'package:union_shop/collection_product_page.dart';
+import 'package:union_shop/logic/cart.dart';
 
 
 
@@ -12,7 +14,12 @@ import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/product_card.dart';
 
 void main() {
-  runApp(const UnionShopApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Cart(),
+      child: const UnionShopApp(),
+    ),
+  );
 }
 
 class UnionShopApp extends StatelessWidget {
