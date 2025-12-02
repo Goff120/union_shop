@@ -5,12 +5,16 @@ class CartItem {
   final String name;
   final String price;
   int quantity;
+  final String colour;
+  final String size;
 
   CartItem({
     required this.imageUrl,
     required this.name,
     required this.price,
     required this.quantity,
+    required this.colour,
+    required this.size,
   });
 
   Map<String, dynamic> toMap() {
@@ -42,7 +46,7 @@ class Cart extends ChangeNotifier {
     return _items.values.fold(0.0, (sum, item) => sum + item.getTotalPrice());
   }
 
-  void addItem(String id, String imageUrl, String name, String price, int quantity) {
+  void addItem(String id, String imageUrl, String name, String price, int quantity,String colour, String size) {
     if (_items.containsKey(id)) {
       _items[id]!.quantity += quantity;
     } else {
@@ -51,6 +55,8 @@ class Cart extends ChangeNotifier {
         name: name,
         price: price,
         quantity: quantity,
+        colour: colour,
+        size: size
       );
     }
     notifyListeners(); //re build page
