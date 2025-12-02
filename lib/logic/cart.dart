@@ -31,6 +31,17 @@ class CartItem {
 class Cart extends ChangeNotifier {
   final Map<String, CartItem> _items = {};
 
+  Map<String, CartItem> get items => {..._items};
+  int get itemCount => _items.length;
+  
+  int get totalQuantity {
+    return _items.values.fold(0, (sum, item) => sum + item.quantity);
+  }
+
+  double get totalPrice {
+    return _items.values.fold(0.0, (sum, item) => sum + item.getTotalPrice());
+  }
+
   void addItem(String id, String imageUrl, String name, String price, int quantity) {
     if (_items.containsKey(id)) {
       _items[id]!.quantity += quantity;
