@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/styles/genral_text.dart';
+import 'package:union_shop/styles/cart_style.dart';
+
 
 class CartProduct extends StatelessWidget {
   final String imageUrl;
@@ -21,6 +22,7 @@ class CartProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -29,7 +31,7 @@ class CartProduct extends StatelessWidget {
         boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 4)],
       ),
       child: Row(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Column(
             children: [
@@ -53,12 +55,12 @@ class CartProduct extends StatelessWidget {
           // Row 2: price
           Column(
             children: [
-              Text(title, style: genHeader1),
+              Text(title, style: cartHeader2),
               if (size != "F") ...[
-                 Text("size: $size", style: genNormal), 
+                 Text("size: $size", style: cartNormal), 
               ],
               if (colour != "F") ...[
-                 Text("colour: $colour", style: genNormal), 
+                 Text("colour: $colour", style: cartNormal), 
               ]
             ],
           ),
@@ -66,7 +68,7 @@ class CartProduct extends StatelessWidget {
           
           Column(
             children: [
-              Text(price, style: genHeader1)
+              Text(price, style: cartHeader2)
             ],
           ),
         ],
