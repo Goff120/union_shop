@@ -25,8 +25,11 @@ class CollectionProductPage extends StatelessWidget {
 
   /// Get products from Firebase based on itemType
   Future<List<Item>> getProducts() async {
-    
+  if (itemType.toLowerCase() == 'sale') {
+      return await _databaseService.getSaleItems();
+    } else {
       return await _databaseService.getItemsByCategory(itemType);
+    }
   }
 
   @override
