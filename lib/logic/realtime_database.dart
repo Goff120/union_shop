@@ -31,3 +31,30 @@ factory Item.fromJson(Map<String, dynamic> json, String category) {
 
 }
 
+class DatabaseService {
+  final DatabaseReference _database = FirebaseDatabase.instance.ref();
+
+  
+
+  // Get items from specific category
+  Future<List<Item>> getItemsByCategory(String category) async {
+    final snapshot = await _database.child('items/$category').get();
+    
+    if (!snapshot.exists) return [];
+    
+    List<Item> items = [];
+    final data = snapshot.value as List<dynamic>;
+    
+    for (var item in data) {
+      if (item != null) {
+        items.add(Item.fromJson(
+          Map<String, dynamic>.from(item),
+          category,
+        ));
+      }
+    }
+    return items;
+  }
+
+  
+}
