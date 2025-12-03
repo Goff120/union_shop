@@ -3,9 +3,17 @@ import 'package:union_shop/part_builder/collection_image.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/styles/genral_text.dart';
+import 'package:union_shop/logic/realtime_database.dart';
 
-class CollectionPage extends StatelessWidget {
+class CollectionPage extends StatefulWidget {
   const CollectionPage({super.key});
+
+  @override
+  State<CollectionPage> createState() => _CollectionPageState();
+}
+
+class _CollectionPageState extends State<CollectionPage> {
+  final DatabaseService _databaseService = DatabaseService();
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -28,63 +36,36 @@ class CollectionPage extends StatelessWidget {
                   MainHeader()
                 ],
               ),
-            ),
+            ), 
             const SizedBox(height: 50),
             const Text("Collection", style: genHeader1),
             const SizedBox(height: 30),
-            const Wrap(
-              spacing: 20,
-              runSpacing: 20,
-              alignment: WrapAlignment.center,
-              children: [
-              CollectionImage(
-                imageUrl: 'assets/images/sock3.jpeg',
-                text: 'SOCKS',
 
-              ),
-              CollectionImage(
-                imageUrl: 'assets/images/well_hot_hoodie.jpeg',
-                text: 'Winter Sales',
-
-              ),
-              CollectionImage(
-                imageUrl: 'assets/images/shirt1.jpeg',
-                text: 'shirts',
-
-              ),
-              CollectionImage(
-                imageUrl: 'assets/images/hat1.jpeg',
-                text: 'hats',
-
-              ),
-              CollectionImage(
-                imageUrl: 'assets/images/trousers1.jpeg',
-                text: 'trousers',
-
-              ),
-              CollectionImage(
-                imageUrl: 'assets/images/hoodie1.jpeg',
-                text: 'hoodie',
-
-
-              ),
-              CollectionImage(
-                imageUrl: 'assets/images/pen1.jpeg',
-                text: 'get the must haves',
-
-              ),
-              CollectionImage(
-                imageUrl: 'assets/images/merch1.jpeg',
-                text: 'merch',
-
-              ),
-              CollectionImage(
-                imageUrl: 'assets/images/pride1.jpeg',
-                text: 'our pride',
-
-              ),
-
-              ],
+            FutureBuilder<Map<String, String>>(
+              future: _databaseService.getFirstImageInCategory(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                
+                if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                }
+                
+                final categoryImages = snapshot.data ?? {};
+                
+                return Wrap(
+                  spacing: 20,
+                  runSpacing: 20,
+                  alignment: WrapAlignment.center,
+                  children: categoryImages.entries.map((entry) {
+                    return CollectionImage(
+                      imageUrl: entry.value,
+                      text: entry.key,
+                    );
+                  }).toList(),
+                );
+              },
             ),
             const SizedBox(height: 12),
             // Footer
