@@ -101,5 +101,14 @@ class DatabaseService {
     
     return saleItems;
   }
+
+  //get first image in a category
+  Future<String?> getFirstImageInCategory(String category) async {
+    final items = await getItemsByCategory(category);
+    for (final item in items) {
+      if (item.images.isNotEmpty) return item.images;
+    }
+    return null;
+  }
   
 }
