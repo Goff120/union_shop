@@ -9,6 +9,7 @@ import 'package:union_shop/cart_page.dart';
 import 'package:union_shop/collection.dart';
 import 'package:union_shop/collection_product_page.dart';
 import 'package:union_shop/logic/cart.dart';
+import 'package:union_shop/logic/realtime_database.dart';
 
 
 
@@ -69,8 +70,15 @@ class UnionShopApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final DatabaseService _databaseService = DatabaseService();
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -193,61 +201,50 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 12),
-              GridView.count(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
-                crossAxisSpacing: 24,
-                mainAxisSpacing: 48,
-                children: const [
-                  ProductCard(
-                    title: 'warm jacket',
-                    price: '£30.00',
-                    image: "assets/images/jacket.webp",
-                    discp: "A thick, cozy warm jacket designed to keep you comfortable in cold weather. Stylish enough for everyday wear, with soft lining and durable material that protects against chilly winds and light rain.",
-                    newprice: "F",
-                  ),
-                  ProductCard(
-                    title: 'nice sleek jean',
-                    price: '£12.00',
-                    image:
-                        'assets/images/jeans.webp',
-                    discp: "These sleek jeans offer a clean, modern fit perfect for any outfit. Soft, flexible denim gives comfort while keeping a sharp look, making them ideal for casual days or dressed-up evenings.",
-                    newprice: "F",
-                  ),
-                  ProductCard(
-                    title: 'well hot hoodie',
-                    price: '£20.00',
-                    image:
-                        'assets/images/well_hot_hoodie.jpeg',
-                    discp: "A warm, stylish hoodie built for comfort and personality. Soft on the inside and bold on the outside, it keeps you cozy all day while giving your outfit that perfect relaxed, confident vibe.",
-                    newprice: "F",
-                  ),
-                  ProductCard(
-                    title: 'the hot mits',
-                    price: '£7.00',
-                    image:
-                        'assets/images/gloves.webp',
-                    discp: "Soft, insulated mitts designed to keep your hands warm in cold weather. Lightweight but protective, they offer comfort, durability, and a simple design that pairs well with any winter outfit.",
-                    newprice: "F",
-                  ),
-                  ProductCard(
-                    title: 'silly hat',
-                    price: '£7.50',
-                    image:
-                        'assets/images/hat1.jpeg',
-                    discp: "A fun, quirky hat that brings personality to your outfit. Warm, comfortable, and full of charm, it adds a playful twist whether you’re braving the cold or just showing off your unique style.",
-                    newprice: "F",
-                  ),
-                  ProductCard(
-                    title: 'rainbow socks',
-                    price: '£9.00',
-                    image:
-                        'assets/images/sock2.jpeg',
-                    discp: "Colorful rainbow socks that brighten any outfit. Soft, comfy, and breathable, they're perfect for daily wear and add a cheerful splash of personality every time you slip them on.",
-                    newprice: "F",
-                  ),
-                ],
+              FutureBuilder<List<Item>>(
+                future: _databaseService.getSaleItems(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(40.0),
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(40.0),
+                        child: Text('Error: ${snapshot.error}'),
+                      ),
+                    );
+                  }
+
+                  final products = snapshot.data ?? [];
+
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
+                      crossAxisSpacing: 24,
+                      mainAxisSpacing: 48,
+                    ),
+                    itemCount: products.length > 6 ? 6 : products.length,
+                    itemBuilder: (context, index) {
+                      final item = products[index];
+                      return ProductCard(
+                        title: item.title,
+                        price: item.price,
+                        image: item.images,
+                        discp: item.discp,
+                        newprice: item.newPrice,
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),
@@ -258,4 +255,5 @@ class HomeScreen extends StatelessWidget {
     ])));
   }
 }
+
 
