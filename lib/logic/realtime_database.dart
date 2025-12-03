@@ -6,6 +6,7 @@ final String price;
 final String images;
 final String discp;
 final String newPrice;
+final String category;
 
 
 Item({
@@ -14,6 +15,9 @@ required this.price,
 required this.images,
 required this.discp,
 required this.newPrice,
+required this.category,
 });
 
+
 }
+
