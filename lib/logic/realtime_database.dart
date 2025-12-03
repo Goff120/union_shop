@@ -56,5 +56,36 @@ class DatabaseService {
     return items;
   }
 
+  // Get all items from Firebase (matches items.json structure)
+  Future<Map<String, List<Item>>> getAllItems() async {
+    final snapshot = await _database.child('items').get();
+    
+    if (!snapshot.exists) return {};
+    
+    Map<String, List<Item>> allItems = {};
+    final data = snapshot.value as Map<dynamic, dynamic>;
+    
+    // Loop through categories: SOCKS, shirts, hats, hoodie, etc.
+    data.forEach((category, items) {
+      List<Item> itemList = [];
+      
+      if (items is List) {
+        for (var item in items) {
+          if (item != null) {
+            itemList.add(Item.fromJson(
+              Map<String, dynamic>.from(item),
+              category.toString(),
+            ));
+          }
+        }
+      }
+      
+      allItems[category.toString()] = itemList;
+    });
+    
+    return allItems;
+  }
+
+  
   
 }
