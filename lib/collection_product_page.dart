@@ -1,24 +1,19 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/part_builder/product_card.dart';
 import 'package:union_shop/styles/genral_text.dart';
+import 'package:union_shop/logic/realtime_database.dart';
 
 class CollectionProductPage extends StatelessWidget {
   final String itemType;
 
-  const CollectionProductPage({
+  CollectionProductPage({
     super.key,
     required this.itemType,
   });
-
-  /// Load entire JSON file
-  Future<Map<String, dynamic>> loadItems() async {
-    final jsonString = await rootBundle.loadString('assets/json/items.json');
-    return jsonDecode(jsonString) as Map<String, dynamic>;
-  }
+ 
+  final DatabaseService _databaseService = DatabaseService();
 
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
@@ -28,38 +23,19 @@ class CollectionProductPage extends StatelessWidget {
     print(filter);
   }
 
-  /// Get products based on itemType
-  /// If itemType is "sale", collect all items with newprice != "F"
-  List<dynamic> getProducts(Map<String, dynamic> allItems) {
-    if (itemType.toLowerCase() == 'sale') {
-      List<dynamic> saleItems = [];
-      
-      // Loop through all categories
-      allItems.forEach((category, items) {
-        if (items is List) {
-          // Filter items that have a sale price (newprice != "F")
-          for (var item in items) {
-            if (item['newprice'] != null && item['newprice'] != 'F' && item['newprice'] != false) {
-              saleItems.add(item);
-            }
-          }
-        }
-      });
-      
-      return saleItems;
-    } else {
-      // Return items from specific category
-      return allItems[itemType] ?? [];
-    }
+  /// Get products from Firebase based on itemType
+  Future<List<Item>> getProducts() async {
+    
+      return await _databaseService.getItemsByCategory(itemType);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<Map<String, dynamic>>(
-        future: loadItems(),
+      body: FutureBuilder<List<Item>>(
+        future: getProducts(),
         builder: (context, snapshot) {
-          if (!snapshot.hasData) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: Padding(
                 padding: EdgeInsets.only(top: 50),
@@ -68,8 +44,16 @@ class CollectionProductPage extends StatelessWidget {
             );
           }
 
-          final allItems = snapshot.data!;
-          final List<dynamic> products = getProducts(allItems);
+          if (snapshot.hasError) {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 50),
+                child: Text('Error: ${snapshot.error}'),
+              ),
+            );
+          }
+
+          final List<Item> products = snapshot.data ?? [];
 
           return SingleChildScrollView(
             child: Column(
@@ -142,10 +126,6 @@ class CollectionProductPage extends StatelessWidget {
                           value: 4,
                           child: Text("popular"),
                           ),
-                          DropdownMenuItem(
-                          value: 5,
-                          child: Text("popular"),
-                          ),
                         ],
                         onChanged: filterCallBack,
                         isExpanded: true,
@@ -196,16 +176,14 @@ class CollectionProductPage extends StatelessWidget {
                     return Padding(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: ProductCard(
-                      title: item['title'],
-                      price: item['price'],
-                      image: item['image'],
-                      discp: item['discp'],
-                      newprice: item['newprice'] == false ? "F" : item['newprice'].toString(),
+                      title: item.title,
+                      price: item.price,
+                      image: item.images,
+                      discp: item.discp,
+                      newprice: item.newPrice,
                     ),
                     );
-                  }
-                    
-                    ).toList(),
+                  }).toList(),
                   ),
                 ),
 
