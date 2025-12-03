@@ -18,6 +18,16 @@ required this.newPrice,
 required this.category,
 });
 
+factory Item.fromJson(Map<String, dynamic> json, String category) {
+    return Item(
+      title: json['title']?? '',
+      price: json['price']?? '£0.00',
+      images: json['image']?? '',
+      discp: json['discp']?? '',
+      newPrice: json['newprice']?.toString() ?? 'F',
+      category: category,
+    );
+  }
 
 }
 
