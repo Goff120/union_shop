@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "330210976660",
+    "firebase_url": "https://union-shop-bdb40-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "union-shop-bdb40",
+    "storage_bucket": "union-shop-bdb40.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330210976660:android:04fa46446e407d7d732581",
+        "android_client_info": {
+          "package_name": "com.example.union_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiZknqOqjMcwuboPLe5FK3vg6a2TPKRcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
