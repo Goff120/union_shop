@@ -1,7 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class Item {
-final int groupId;
 final String title;
 final String price;
 final String images;
@@ -10,7 +9,6 @@ final String newPrice;
 
 
 Item({
-required this.groupId,
 required this.title,
 required this.price,
 required this.images,
