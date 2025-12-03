@@ -118,5 +118,34 @@ class DatabaseService {
     
     return categoryImages;
   }
-  
+
+Future<Item?> getItemByTitle(String title) async {
+    final snapshot = await _database.child('items').get();
+    if (!snapshot.exists) return null;
+
+    final data = snapshot.value;
+    if (data is! Map) return null;
+
+    final search = title.toString().toLowerCase().trim();
+
+    for (final categoryEntry in data.entries) {
+      final category = categoryEntry.key;
+      final items = categoryEntry.value;
+
+      // handle list-stored items
+      if (items is List) {
+        for (final item in items) {
+          if (item == null) continue;
+          if (item is Map) {
+            final itemTitle = (item['title'] ?? item['Title'] ?? '').toString().toLowerCase().trim();
+            if (itemTitle == search) {
+              return Item.fromJson(Map<String, dynamic>.from(item), category.toString());
+            }
+          }
+        }
+      }
+    }
+
+    return null;
+  }
 }
