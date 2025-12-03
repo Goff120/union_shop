@@ -5,6 +5,9 @@ import 'package:union_shop/part_builder/product_card.dart';
 import 'package:union_shop/styles/genral_text.dart';
 import 'package:union_shop/logic/realtime_database.dart';
 
+enum ProductFilter { all, clothes, merch, popular }
+enum ProductSort { priceLowToHigh, priceHighToLow, newest, bestSellers, ratings }
+
 class CollectionProductPage extends StatelessWidget {
   final String itemType;
 
@@ -19,8 +22,12 @@ class CollectionProductPage extends StatelessWidget {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
   
-  void filterCallBack(int? filter) {
+  void filterCallBack(ProductFilter? filter) {
     print(filter);
+  }
+
+  void sortCallBack(ProductSort? sort) {
+    print(sort);
   }
 
   /// Get products from Firebase based on itemType
@@ -109,24 +116,24 @@ class CollectionProductPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Expanded(
-                        child: DropdownButton(
+                        child: DropdownButton<ProductFilter>(
                         key: const Key('filter_dropdown'),
                         hint: const Text("filter by", style: genHeader2),
                         items: const [
                           DropdownMenuItem(
-                          value: 1,
+                          value: ProductFilter.all,
                           child: Text("all products"),
                           ),
                           DropdownMenuItem(
-                          value: 2,
+                          value: ProductFilter.clothes,
                           child: Text("clothes"),
                           ),
                           DropdownMenuItem(
-                          value: 3,
+                          value: ProductFilter.merch,
                           child: Text("merch"),
                           ),
                           DropdownMenuItem(
-                          value: 4,
+                          value: ProductFilter.popular,
                           child: Text("popular"),
                           ),
                         ],
@@ -137,32 +144,32 @@ class CollectionProductPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 16),
                       Expanded(
-                        child: DropdownButton(
+                        child: DropdownButton<ProductSort>(
                         key: const Key('sort_dropdown'),
                         hint: const Text("sort by", style: genHeader2),
                         items: const [
                           DropdownMenuItem(
-                          value: 1,
+                          value: ProductSort.priceLowToHigh,
                           child: Text("price: low to high"),
                           ),
                           DropdownMenuItem(
-                          value: 2,
+                          value: ProductSort.priceHighToLow,
                           child: Text("price: high to low"),
                           ),
                           DropdownMenuItem(
-                          value: 3,
+                          value: ProductSort.newest,
                           child: Text("newest first"),
                           ),
                           DropdownMenuItem(
-                          value: 4,
+                          value: ProductSort.bestSellers,
                           child: Text("best sellers"),
                           ),
                           DropdownMenuItem(
-                          value: 5,
+                          value: ProductSort.ratings,
                           child: Text("ratings"),
                           ),
                         ],
-                        onChanged: filterCallBack,
+                        onChanged: sortCallBack,
                         isExpanded: true,
                         underline: Container(height: 2, color: Colors.black),
                         ),
