@@ -56,7 +56,7 @@ class DatabaseService {
     return items;
   }
 
-  // Get all items from Firebase (matches items.json structure)
+  // Get all items from Firebase 
   Future<Map<String, List<Item>>> getAllItems() async {
     final snapshot = await _database.child('items').get();
     
@@ -65,7 +65,7 @@ class DatabaseService {
     Map<String, List<Item>> allItems = {};
     final data = snapshot.value as Map<dynamic, dynamic>;
     
-    // Loop through categories: SOCKS, shirts, hats, hoodie, etc.
+    
     data.forEach((category, items) {
       List<Item> itemList = [];
       
@@ -86,6 +86,20 @@ class DatabaseService {
     return allItems;
   }
 
-  
+  //get all items on sale
+  Future<List<Item>> getSaleItems() async {
+    final allItems = await getAllItems();
+    List<Item> saleItems = [];
+    
+    allItems.forEach((category, items) {
+      for (var item in items) {
+        if (item.newPrice != 'F' && item.newPrice != 'false') {
+          saleItems.add(item);
+        }
+      }
+    });
+    
+    return saleItems;
+  }
   
 }
