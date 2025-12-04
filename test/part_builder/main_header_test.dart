@@ -59,7 +59,7 @@ void main() {
 
   await tester.pumpWidget(
     MaterialApp(
-      initialRoute: '/other', // ✅ Start on different route
+      initialRoute: '/other', 
       routes: {
         '/': (context) {
           homeNavigated = true;
