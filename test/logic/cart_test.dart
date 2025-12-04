@@ -176,6 +176,18 @@ group('Cart Tests', () {
       expect(cart.items['item1'], isNull);
       expect(cart.items['item2'], isNotNull);
     });
+
+    test('Cart clear removes all items', () {
+      cart.addItem('item1', 'image1.jpg', 'Product 1', '£10.00', 2, 'Red', 'M');
+      cart.addItem('item2', 'image2.jpg', 'Product 2', '£15.00', 1, 'Blue', 'L');
+      
+      cart.clear();
+
+      expect(cart.itemCount, 0);
+      expect(cart.totalQuantity, 0);
+      expect(cart.totalPrice, 0.0);
+      expect(cart.items, isEmpty);
+    });
     
   });
 }
