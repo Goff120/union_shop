@@ -367,7 +367,98 @@ void main() {
       });
     });
 
-    
+    group('getItemByTitle Tests', () {
+      test('finds item by exact title match (case insensitive)', () async {
+        final mockData = {
+          'socks': [
+            {
+              'title': 'Rainbow Socks',
+              'price': '£9.00',
+              'image': 'assets/images/sock2.jpeg',
+              'discp': 'Colorful rainbow socks',
+              'newprice': 'F'
+            },
+            {
+              'title': 'Blue Socks',
+              'price': '£8.00',
+              'image': 'assets/images/sock1.jpeg',
+              'discp': 'Blue colored socks',
+              'newprice': 'F'
+            }
+          ]
+        };
+
+        when(mockSnapshot.exists).thenReturn(true);
+        when(mockSnapshot.value).thenReturn(mockData);
+        when(mockDatabaseRef.child('items')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        final result = await _getItemByTitleWithMock(mockDatabaseRef, 'rainbow socks');
+        
+        expect(result, isNotNull);
+        expect(result!.title, 'Rainbow Socks');
+        expect(result.category, 'socks');
+      });
+
+      test('returns null when item not found', () async {
+        final mockData = {
+          'socks': [
+            {
+              'title': 'Rainbow Socks',
+              'price': '£9.00',
+              'image': 'assets/images/sock2.jpeg',
+              'discp': 'Colorful rainbow socks',
+              'newprice': 'F'
+            }
+          ]
+        };
+
+        when(mockSnapshot.exists).thenReturn(true);
+        when(mockSnapshot.value).thenReturn(mockData);
+        when(mockDatabaseRef.child('items')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        final result = await _getItemByTitleWithMock(mockDatabaseRef, 'non-existent item');
+        
+        expect(result, isNull);
+      });
+
+      test('returns null when snapshot does not exist', () async {
+        when(mockSnapshot.exists).thenReturn(false);
+        when(mockDatabaseRef.child('items')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        final result = await _getItemByTitleWithMock(mockDatabaseRef, 'any title');
+        
+        expect(result, isNull);
+      });
+
+      test('handles null items in list when searching', () async {
+        final mockData = {
+          'test': [
+            null,
+            {
+              'title': 'Valid Item',
+              'price': '£10.00',
+              'image': 'test.jpg',
+              'discp': 'Valid item',
+              'newprice': 'F'
+            }
+          ]
+        };
+
+        when(mockSnapshot.exists).thenReturn(true);
+        when(mockSnapshot.value).thenReturn(mockData);
+        when(mockDatabaseRef.child('items')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        final result = await _getItemByTitleWithMock(mockDatabaseRef, 'valid item');
+        
+        expect(result, isNotNull);
+        expect(result!.title, 'Valid Item');
+      });
+    });
+  });
 }
 
 
