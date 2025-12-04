@@ -84,28 +84,30 @@ void main() {
   expect(homeNavigated, isTrue);
 });
 
-  testWidgets('MainHeader displays desktop navigation on wide screen', (WidgetTester tester) async {
-    // Set screen size to desktop width
-    tester.view.physicalSize = const Size(1200, 800);
-    tester.view.devicePixelRatio = 1.0;
-
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: Scaffold(
-          body: MainHeader(),
-        ),
+testWidgets('MainHeader displays desktop navigation on wide screen', (WidgetTester tester) async {
+  // Use binding to set screen size
+  await tester.binding.setSurfaceSize(const Size(1200, 800));
+  
+  await tester.pumpWidget(
+    const MaterialApp(
+      home: Scaffold(
+        body: MainHeader(),
       ),
-    );
+    ),
+  );
 
-    // Verify desktop navigation links are displayed
-    expect(find.text('Home'), findsOneWidget);
-    expect(find.text('Products'), findsOneWidget);
-    expect(find.text('About'), findsOneWidget);
-    expect(find.text('Contact'), findsOneWidget);
+  // Wait for any responsive changes to take effect
+  await tester.pumpAndSettle();
 
-    // Reset screen size
-    addTearDown(tester.view.reset);
-  });
+  // Verify desktop navigation links are displayed
+  expect(find.text('Home'), findsOneWidget);
+  expect(find.text('Products'), findsOneWidget);
+  expect(find.text('About'), findsOneWidget);
+  expect(find.text('Contact'), findsOneWidget);
+
+  // Reset screen size
+  addTearDown(() => tester.binding.setSurfaceSize(null));
+});
 
   testWidgets('MainHeader hides desktop navigation on mobile', (WidgetTester tester) async {
     // Set screen size to mobile width
