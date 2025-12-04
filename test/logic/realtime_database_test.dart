@@ -289,7 +289,85 @@ void main() {
       });
     });
 
+    group('getFirstImageInCategory Tests', () {
+      test('returns first non-empty image for each category', () async {
+        final allItems = {
+          'socks': [
+            Item(
+              title: 'Sock 1',
+              price: '£10.00',
+              images: '', // Empty image
+              discp: 'First sock',
+              newPrice: 'F',
+              category: 'socks',
+            ),
+            Item(
+              title: 'Sock 2',
+              price: '£12.00',
+              images: 'assets/images/sock2.jpeg', // First valid image
+              discp: 'Second sock',
+              newPrice: 'F',
+              category: 'socks',
+            ),
+            Item(
+              title: 'Sock 3',
+              price: '£15.00',
+              images: 'assets/images/sock3.jpeg',
+              discp: 'Third sock',
+              newPrice: 'F',
+              category: 'socks',
+            )
+          ],
+          'shirts': [
+            Item(
+              title: 'Shirt 1',
+              price: '£25.00',
+              images: 'assets/images/shirt1.jpeg',
+              discp: 'First shirt',
+              newPrice: 'F',
+              category: 'shirts',
+            )
+          ]
+        };
 
+        final categoryImages = _getFirstImageInCategory(allItems);
+        
+        expect(categoryImages['socks'], 'assets/images/sock2.jpeg');
+        expect(categoryImages['shirts'], 'assets/images/shirt1.jpeg');
+      });
+
+      test('handles categories with no valid images', () async {
+        final allItems = {
+          'empty': [
+            Item(
+              title: 'Empty Image Item',
+              price: '£10.00',
+              images: '',
+              discp: 'No image',
+              newPrice: 'F',
+              category: 'empty',
+            )
+          ],
+          'valid': [
+            Item(
+              title: 'Valid Image Item',
+              price: '£15.00',
+              images: 'valid.jpg',
+              discp: 'Has image',
+              newPrice: 'F',
+              category: 'valid',
+            )
+          ]
+        };
+
+        final categoryImages = _getFirstImageInCategory(allItems);
+        
+        expect(categoryImages.containsKey('empty'), false);
+        expect(categoryImages['valid'], 'valid.jpg');
+      });
+    });
+
+    
 }
 
 
