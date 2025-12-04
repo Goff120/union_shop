@@ -210,6 +210,85 @@ void main() {
       });
     });
 
+    group('getSaleItems Tests', () {
+      test('returns only items with valid sale prices', () async {
+        // This would require mocking the getAllItems method
+        // For now, we'll test the sale logic separately
+        final allItems = {
+          'socks': [
+            Item(
+              title: 'Regular Sock',
+              price: '£10.00',
+              images: 'test.jpg',
+              discp: 'Regular price sock',
+              newPrice: 'F', // Not on sale
+              category: 'socks',
+            ),
+            Item(
+              title: 'Sale Sock',
+              price: '£10.00',
+              images: 'test2.jpg',
+              discp: 'Sale price sock',
+              newPrice: '£7.00', // On sale
+              category: 'socks',
+            )
+          ],
+          'shirts': [
+            Item(
+              title: 'Sale Shirt',
+              price: '£25.00',
+              images: 'test3.jpg',
+              discp: 'Sale price shirt',
+              newPrice: '£20.00', // On sale
+              category: 'shirts',
+            )
+          ]
+        };
+
+        final saleItems = _extractSaleItems(allItems);
+        
+        expect(saleItems, hasLength(2));
+        expect(saleItems[0].title, 'Sale Sock');
+        expect(saleItems[1].title, 'Sale Shirt');
+      });
+
+      test('excludes items with F or false new price', () async {
+        final allItems = {
+          'test': [
+            Item(
+              title: 'Not On Sale 1',
+              price: '£10.00',
+              images: 'test.jpg',
+              discp: 'Not on sale',
+              newPrice: 'F',
+              category: 'test',
+            ),
+            Item(
+              title: 'Not On Sale 2',
+              price: '£15.00',
+              images: 'test2.jpg',
+              discp: 'Also not on sale',
+              newPrice: 'false',
+              category: 'test',
+            ),
+            Item(
+              title: 'On Sale',
+              price: '£20.00',
+              images: 'test3.jpg',
+              discp: 'This is on sale',
+              newPrice: '£15.00',
+              category: 'test',
+            )
+          ]
+        };
+
+        final saleItems = _extractSaleItems(allItems);
+        
+        expect(saleItems, hasLength(1));
+        expect(saleItems[0].title, 'On Sale');
+      });
+    });
+
 
 }
 
