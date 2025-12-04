@@ -2,23 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:union_shop/logic/cart.dart';
+import 'package:union_shop/logic/realtime_database.dart';
 import 'package:union_shop/part_builder/footer.dart';
 import 'package:union_shop/part_builder/main_header.dart';
 import 'package:union_shop/part_builder/styled_button.dart';
 import 'package:union_shop/styles/genral_text.dart';
 
 class ProductPage extends StatefulWidget {
-  final String image;
   final String title;
-  final String price;
-  final String discp;
 
   const ProductPage({
     Key? key,
-    required this.image,
     required this.title,
-    required this.price,
-    required this.discp,
   }) : super(key: key);
 
   @override
@@ -28,9 +23,12 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   final Map<String, dynamic> selections = {};
   final TextEditingController quantityController = TextEditingController();
+  final DatabaseService _dbService = DatabaseService();
   
   String? selectedColour;
   String? selectedSize;
+  Item? _item;
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -39,6 +37,21 @@ class _ProductPageState extends State<ProductPage> {
     selectedSize = 'M';
     selections['colour'] = selectedColour;
     selections['size'] = selectedSize;
+    _loadItem();
+  }
+
+  Future<void> _loadItem() async {
+    try {
+      final item = await _dbService.getItemByTitle(widget.title);
+      setState(() {
+        _item = item;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
 
   void navigateToHome(BuildContext context) {
@@ -60,6 +73,8 @@ class _ProductPageState extends State<ProductPage> {
   }
 
   void addToCart(BuildContext context) {
+    if (_item == null) return;
+    
     final cart = Provider.of<Cart>(context, listen: false);
     final quantity = int.tryParse(quantityController.text) ?? 1;
     
@@ -70,7 +85,7 @@ class _ProductPageState extends State<ProductPage> {
     // Create a unique ID based on title and selections
     final id = '${widget.title}-$colour-$size';
     
-    cart.addItem(id, widget.image, widget.title, widget.price, quantity, colour, size);
+    cart.addItem(id, _item!.images, _item!.title, _item!.price, quantity, colour, size);
     
     // Show confirmation
     ScaffoldMessenger.of(context).showSnackBar(
