@@ -163,6 +163,53 @@ void main() {
       });
     });
 
+    group('getAllItems Tests', () {
+      test('returns empty map when snapshot does not exist', () async {
+        when(mockSnapshot.exists).thenReturn(false);
+        when(mockDatabaseRef.child('items')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        final result = await _getAllItemsWithMock(mockDatabaseRef);
+        expect(result, isEmpty);
+      });
+
+      test('returns map of all items by category', () async {
+        final mockData = {
+          'socks': [
+            {
+              'title': 'Rainbow Socks',
+              'price': '£9.00',
+              'image': 'assets/images/sock2.jpeg',
+              'discp': 'Colorful rainbow socks',
+              'newprice': 'F'
+            }
+          ],
+          'shirts': [
+            {
+              'title': 'Blue Shirt',
+              'price': '£25.00',
+              'image': 'assets/images/shirt1.jpeg',
+              'discp': 'Classic blue shirt',
+              'newprice': 'F'
+            }
+          ]
+        };
+
+        when(mockSnapshot.exists).thenReturn(true);
+        when(mockSnapshot.value).thenReturn(mockData);
+        when(mockDatabaseRef.child('items')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        final result = await _getAllItemsWithMock(mockDatabaseRef);
+        
+        expect(result.keys, containsAll(['socks', 'shirts']));
+        expect(result['socks'], hasLength(1));
+        expect(result['shirts'], hasLength(1));
+        expect(result['socks']![0].title, 'Rainbow Socks');
+        expect(result['shirts']![0].title, 'Blue Shirt');
+      });
+    });
+
 
 }
 
