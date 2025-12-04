@@ -95,4 +95,19 @@ void main() {
       expect(cartItem.getTotalPrice(), 50.0);
     });
   });
+
+  group('Cart Tests', () {
+    late Cart cart;
+
+    setUp(() {
+      cart = Cart();
+    });
+
+    test('Cart initializes empty', () {
+      expect(cart.items, isEmpty);
+      expect(cart.itemCount, 0);
+      expect(cart.totalQuantity, 0);
+      expect(cart.totalPrice, 0.0);
+    });
+  });
 }
