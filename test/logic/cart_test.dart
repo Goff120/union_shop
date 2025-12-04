@@ -96,7 +96,7 @@ void main() {
     });
   });
 
-  group('Cart Tests', () {
+group('Cart Tests', () {
     late Cart cart;
 
     setUp(() {
@@ -109,5 +109,17 @@ void main() {
       expect(cart.totalQuantity, 0);
       expect(cart.totalPrice, 0.0);
     });
+
+    test('Cart addItem creates new item', () {
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£10.00', 2, 'Red', 'M');
+
+      expect(cart.itemCount, 1);
+      expect(cart.totalQuantity, 2);
+      expect(cart.totalPrice, 20.0);
+      expect(cart.items['item1']?.name, 'Product 1');
+      expect(cart.items['item1']?.quantity, 2);
+    });
+
+    
   });
 }
