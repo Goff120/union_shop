@@ -20,7 +20,7 @@ A Flutter-based e-commerce application for a moch up of the University of Portsm
 
 ## firebase
  - using firebase to store the data of each product 
- - also acts as a hosting to the sever using the link: 
+ - also acts as a hosting to the sever using the link: https://union-shop-bdb40.web.app/
 
 ## Installation and Setup 🚀
 
