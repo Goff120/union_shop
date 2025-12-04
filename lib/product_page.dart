@@ -115,7 +115,21 @@ class _ProductPageState extends State<ProductPage> {
             ),
 
             // Product details
-            Container(
+            _isLoading
+                ? const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(40.0),
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : _item == null
+                    ? const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(40.0),
+                          child: Text('Product not found'),
+                        ),
+                      )
+                    : Container(
               color: Colors.white,
               padding: const EdgeInsets.all(24),
               child: Column(
@@ -132,7 +146,7 @@ class _ProductPageState extends State<ProductPage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.asset(
-                        widget.image,
+                        _item!.images,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
@@ -164,7 +178,7 @@ class _ProductPageState extends State<ProductPage> {
 
                   // Product name
                   Text(
-                    widget.title,
+                    _item!.title,
                     style: const TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -176,7 +190,7 @@ class _ProductPageState extends State<ProductPage> {
 
                   // Product price
                   Text(
-                    widget.price,
+                    _item!.price,
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -189,7 +203,7 @@ class _ProductPageState extends State<ProductPage> {
                   // Product description
                   const Text('Description', style: genHeader2),
                   const SizedBox(height: 8),
-                  Text(widget.discp, style: genNormal),
+                  Text(_item!.discp, style: genNormal),
                   const SizedBox(height: 14),
                   const Text('Purchase', style: genHeader2),
 
