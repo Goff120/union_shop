@@ -78,6 +78,15 @@ void main() {
     });
   });
 
+  group('DatabaseService Tests', () {
+    late MockDatabaseReference mockDatabaseRef;
+    late MockDataSnapshot mockSnapshot;
+
+    setUp(() {
+      mockDatabaseRef = MockDatabaseReference();
+      mockSnapshot = MockDataSnapshot();
+    });
+
 }
 
 
