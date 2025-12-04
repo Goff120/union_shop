@@ -15,6 +15,10 @@ class SignUpPage extends StatelessWidget {
     //none function shop
   }
 
+  void loginCallBack() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +93,7 @@ class SignUpPage extends StatelessWidget {
 
                   StyledButton(
                     key: const Key('sign in'),
-                    onPressed: _shopCallback,
+                    onPressed: loginCallBack,
                     label: 'Sign in',
                     backgroundColor: const Color.fromARGB(255, 149, 36, 230),
                   ),
