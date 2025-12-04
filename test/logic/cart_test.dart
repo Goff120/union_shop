@@ -130,6 +130,15 @@ group('Cart Tests', () {
       expect(cart.items['item1']?.quantity, 5);
     });
 
+    test('Cart addItem creates separate items for different IDs', () {
+      cart.addItem('item1', 'image1.jpg', 'Product 1', '£10.00', 2, 'Red', 'M');
+      cart.addItem('item2', 'image2.jpg', 'Product 2', '£15.00', 1, 'Blue', 'L');
+
+      expect(cart.itemCount, 2);
+      expect(cart.totalQuantity, 3);
+      expect(cart.totalPrice, 35.0);
+    });
+
     
   });
 }
