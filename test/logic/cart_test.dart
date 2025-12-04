@@ -54,5 +54,18 @@ void main() {
       expect(cartItem.getTotalPrice(), 51.98);
     });
 
+    test('CartItem getTotalPrice calculates correctly without £ symbol', () {
+      final cartItem = CartItem(
+        imageUrl: 'test-image.jpg',
+        name: 'Test Product',
+        price: '25.99',
+        quantity: 3,
+        colour: 'Blue',
+        size: 'L',
+      );
+
+      expect(cartItem.getTotalPrice(), 77.97);
+    });
+
   });
 }
