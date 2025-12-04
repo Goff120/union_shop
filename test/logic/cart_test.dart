@@ -139,6 +139,16 @@ group('Cart Tests', () {
       expect(cart.totalPrice, 35.0);
     });
 
+    test('Cart updateQuantity removes item when quantity is 0', () {
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£10.00', 2, 'Red', 'M');
+      cart.updateQuantity('item1', 0);
+
+      expect(cart.itemCount, 0);
+      expect(cart.totalQuantity, 0);
+      expect(cart.totalPrice, 0.0);
+      expect(cart.items['item1'], isNull);
+    });
+
     
   });
 }
