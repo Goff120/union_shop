@@ -55,35 +55,34 @@ void main() {
   });
 
   testWidgets('MainHeader logo navigates to home on tap', (WidgetTester tester) async {
-    bool homeNavigated = false;
+  bool homeNavigated = false;
 
-    await tester.pumpWidget(
-      MaterialApp(
-        home: const Scaffold(
+  await tester.pumpWidget(
+    MaterialApp(
+      initialRoute: '/other', // ✅ Start on different route
+      routes: {
+        '/': (context) {
+          homeNavigated = true;
+          return const Scaffold(body: Text('Home Page'));
+        },
+        '/other': (context) => const Scaffold(
           body: MainHeader(),
         ),
-        routes: {
-          '/': (context) {
-            homeNavigated = true;
-            return const Scaffold(body: Text('Home Page'));
-          },
-        },
-      ),
-    );
+      },
+    ),
+  );
 
-    // Find the logo's GestureDetector
-    final logoGesture = find.descendant(
-      of: find.byType(MainHeader),
-      matching: find.byType(GestureDetector),
-    ).first;
+  // Find and tap the logo
+  final logoGesture = find.descendant(
+    of: find.byType(MainHeader),
+    matching: find.byType(GestureDetector),
+  ).first;
 
-    // Tap the logo
-    await tester.tap(logoGesture);
-    await tester.pumpAndSettle();
+  await tester.tap(logoGesture);
+  await tester.pumpAndSettle();
 
-    // Verify navigation occurred
-    expect(homeNavigated, isTrue);
-  });
+  expect(homeNavigated, isTrue);
+});
 
   testWidgets('MainHeader displays desktop navigation on wide screen', (WidgetTester tester) async {
     // Set screen size to desktop width
