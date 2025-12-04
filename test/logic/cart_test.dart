@@ -79,6 +79,20 @@ void main() {
 
       expect(cartItem.getTotalPrice(), 0.0);
     });
+    
+  test('CartItem quantity can be updated', () {
+      final cartItem = CartItem(
+        imageUrl: 'test-image.jpg',
+        name: 'Test Product',
+        price: '£10.00',
+        quantity: 1,
+        colour: 'Black',
+        size: 'XL',
+      );
 
+      cartItem.quantity = 5;
+      expect(cartItem.quantity, 5);
+      expect(cartItem.getTotalPrice(), 50.0);
+    });
   });
 }
