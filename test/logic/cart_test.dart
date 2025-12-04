@@ -157,6 +157,12 @@ group('Cart Tests', () {
       expect(cart.items['item1'], isNull);
     });
 
+    test('Cart updateQuantity ignores non-existent item', () {
+      cart.updateQuantity('nonexistent', 5);
+
+      expect(cart.itemCount, 0);
+      expect(cart.totalQuantity, 0);
+    });
     
   });
 }
