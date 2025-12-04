@@ -188,6 +188,23 @@ group('Cart Tests', () {
       expect(cart.totalPrice, 0.0);
       expect(cart.items, isEmpty);
     });
+
+    test('Cart totalPrice calculates correctly with multiple items', () {
+      cart.addItem('item1', 'image1.jpg', 'Product 1', '£10.50', 2, 'Red', 'M');
+      cart.addItem('item2', 'image2.jpg', 'Product 2', '£15.25', 3, 'Blue', 'L');
+      cart.addItem('item3', 'image3.jpg', 'Product 3', '£5.00', 1, 'Green', 'S');
+
+      // (10.50 * 2) + (15.25 * 3) + (5.00 * 1) = 21.00 + 45.75 + 5.00 = 71.75
+      expect(cart.totalPrice, 71.75);
+    });
+
+    test('Cart handles decimal precision correctly', () {
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£0.99', 3, 'Red', 'M');
+
+      expect(cart.totalPrice, closeTo(2.97, 0.01));
+    });
+
+
     
   });
 }
