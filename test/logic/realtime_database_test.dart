@@ -79,3 +79,110 @@ void main() {
   });
 
 }
+
+
+
+Future<List<Item>> _getItemsByCategoryWithMock(MockDatabaseReference mockRef, String category) async {
+  final snapshot = await mockRef.get();
+  
+  if (!snapshot.exists) return [];
+  
+  List<Item> items = [];
+  final data = snapshot.value as List<dynamic>;
+  
+  for (var item in data) {
+    if (item != null) {
+      items.add(Item.fromJson(
+        Map<String, dynamic>.from(item),
+        category,
+      ));
+    }
+  }
+  return items;
+}
+
+Future<Map<String, List<Item>>> _getAllItemsWithMock(MockDatabaseReference mockRef) async {
+  final snapshot = await mockRef.get();
+  
+  if (!snapshot.exists) return {};
+  
+  Map<String, List<Item>> allItems = {};
+  final data = snapshot.value as Map<dynamic, dynamic>;
+  
+  data.forEach((category, items) {
+    List<Item> itemList = [];
+    
+    if (items is List) {
+      for (var item in items) {
+        if (item != null) {
+          itemList.add(Item.fromJson(
+            Map<String, dynamic>.from(item),
+            category.toString(),
+          ));
+        }
+      }
+    }
+    
+    allItems[category.toString()] = itemList;
+  });
+  
+  return allItems;
+}
+
+List<Item> _extractSaleItems(Map<String, List<Item>> allItems) {
+  List<Item> saleItems = [];
+  
+  allItems.forEach((category, items) {
+    for (var item in items) {
+      if (item.newPrice != 'F' && item.newPrice != 'false') {
+        saleItems.add(item);
+      }
+    }
+  });
+  
+  return saleItems;
+}
+
+Map<String, String> _getFirstImageInCategory(Map<String, List<Item>> allItems) {
+  Map<String, String> categoryImages = {};
+  
+  allItems.forEach((category, items) {
+    for (final item in items) {
+      if (item.images.isNotEmpty) {
+        categoryImages[category] = item.images;
+        break; 
+      }
+    }
+  });
+  
+  return categoryImages;
+}
+
+Future<Item?> _getItemByTitleWithMock(MockDatabaseReference mockRef, String title) async {
+  final snapshot = await mockRef.get();
+  if (!snapshot.exists) return null;
+
+  final data = snapshot.value;
+  if (data is! Map) return null;
+
+  final search = title.toString().toLowerCase().trim();
+
+  for (final categoryEntry in data.entries) {
+    final category = categoryEntry.key;
+    final items = categoryEntry.value;
+
+    if (items is List) {
+      for (final item in items) {
+        if (item == null) continue;
+        if (item is Map) {
+          final itemTitle = (item['title'] ?? item['Title'] ?? '').toString().toLowerCase().trim();
+          if (itemTitle == search) {
+            return Item.fromJson(Map<String, dynamic>.from(item), category.toString());
+          }
+        }
+      }
+    }
+  }
+
+  return null;
+}
