@@ -41,5 +41,18 @@ void main() {
       });
     });
 
+    test('CartItem getTotalPrice calculates correctly with £ symbol', () {
+      final cartItem = CartItem(
+        imageUrl: 'test-image.jpg',
+        name: 'Test Product',
+        price: '£25.99',
+        quantity: 2,
+        colour: 'Red',
+        size: 'M',
+      );
+
+      expect(cartItem.getTotalPrice(), 51.98);
+    });
+
   });
 }

@@ -13,6 +13,8 @@ void main() {
       ),
     );
 
+    await tester.pump(); // Pump once to start the FutureBuilder
+
     // Verify MainHeader is displayed
     expect(find.byType(MainHeader), findsOneWidget);
   });
@@ -23,6 +25,8 @@ void main() {
         home: CollectionPage(),
       ),
     );
+
+    await tester.pumpAndSettle(); // Wait for async operations
 
     // Verify Footer is displayed
     expect(find.byType(Footer), findsOneWidget);

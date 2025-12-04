@@ -58,7 +58,6 @@ void main() {
       expect(oldPriceText.style?.decoration, TextDecoration.lineThrough);
       expect(oldPriceText.style?.color, Colors.red);
     });
-
     testWidgets('navigates to ProductPage when tapped', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
@@ -74,9 +73,6 @@ void main() {
           routes: {
             '/product': (context) => const ProductPage(
                   title: 'Tappable Product',
-                  price: '£15.00',
-                  image: 'assets/images/jacket.webp',
-                  discp: 'Tap me!',
                 ),
           },
         ),
