@@ -21,5 +21,25 @@ void main() {
       expect(cartItem.size, 'M');
     });
 
+        test('CartItem toMap converts to correct format', () {
+      final cartItem = CartItem(
+        imageUrl: 'test-image.jpg',
+        name: 'Test Product',
+        price: '£25.99',
+        quantity: 2,
+        colour: 'Red',
+        size: 'M',
+      );
+
+      final map = cartItem.toMap();
+
+      expect(map, {
+        'imageUrl': 'test-image.jpg',
+        'name': 'Test Product',
+        'price': '£25.99',
+        'quantity': 2,
+      });
+    });
+
   });
 }
