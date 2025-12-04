@@ -120,6 +120,16 @@ group('Cart Tests', () {
       expect(cart.items['item1']?.quantity, 2);
     });
 
+    test('Cart addItem increases quantity for existing item', () {
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£10.00', 2, 'Red', 'M');
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£10.00', 3, 'Red', 'M');
+
+      expect(cart.itemCount, 1);
+      expect(cart.totalQuantity, 5);
+      expect(cart.totalPrice, 50.0);
+      expect(cart.items['item1']?.quantity, 5);
+    });
+
     
   });
 }
