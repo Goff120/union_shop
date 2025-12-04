@@ -28,7 +28,17 @@ class Footer extends StatelessWidget {
 
           InkWell(
             child: const Text(
-              "help me",
+              "Search",
+              style: footerlink,
+            ),
+            onTap: () async {
+              final url = Uri.parse("https://www.google.com/");
+              await launchUrl(url);
+            },
+          ),
+          InkWell(
+            child: const Text(
+              "Terms & conditions of Sale Policy",
               style: footerlink,
             ),
             onTap: () async {
