@@ -78,16 +78,13 @@ class _ProductPageState extends State<ProductPage> {
     final cart = Provider.of<Cart>(context, listen: false);
     final quantity = int.tryParse(quantityController.text) ?? 1;
     
-    // Get colour and size with fallback to "F" if not selected
     final colour = selections['colour']?.toString() ?? 'F';
     final size = selections['size']?.toString() ?? 'F';
     
-    // Create a unique ID based on title and selections
     final id = '${widget.title}-$colour-$size';
     
     cart.addItem(id, _item!.images, _item!.title, _item!.price, quantity, colour, size);
     
-    // Show confirmation
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Added $quantity x ${widget.title} to cart'),
