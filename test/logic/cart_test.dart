@@ -202,9 +202,63 @@ group('Cart Tests', () {
       cart.addItem('item1', 'image.jpg', 'Product 1', '£0.99', 3, 'Red', 'M');
 
       expect(cart.totalPrice, closeTo(2.97, 0.01));
+    }); 
+  });
+
+  group('Cart ChangeNotifier Tests', () {
+    test('Cart notifies listeners on addItem', () {
+      final cart = Cart();
+      bool notified = false;
+      
+      cart.addListener(() {
+        notified = true;
+      });
+
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£10.00', 1, 'Red', 'M');
+
+      expect(notified, isTrue);
     });
 
+    test('Cart notifies listeners on updateQuantity', () {
+      final cart = Cart();
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£10.00', 1, 'Red', 'M');
+      
+      bool notified = false;
+      cart.addListener(() {
+        notified = true;
+      });
 
-    
+      cart.updateQuantity('item1', 5);
+
+      expect(notified, isTrue);
+    });
+
+    test('Cart notifies listeners on removeItem', () {
+      final cart = Cart();
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£10.00', 1, 'Red', 'M');
+      
+      bool notified = false;
+      cart.addListener(() {
+        notified = true;
+      });
+
+      cart.removeItem('item1');
+
+      expect(notified, isTrue);
+    });
+
+    test('Cart notifies listeners on clear', () {
+      final cart = Cart();
+      cart.addItem('item1', 'image.jpg', 'Product 1', '£10.00', 1, 'Red', 'M');
+      
+      bool notified = false;
+      cart.addListener(() {
+        notified = true;
+      });
+
+      cart.clear();
+
+      expect(notified, isTrue);
+    });
   });
 }
