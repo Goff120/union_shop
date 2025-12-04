@@ -8,6 +8,7 @@ import 'package:union_shop/about_page.dart';
 import 'package:union_shop/cart_page.dart';
 import 'package:union_shop/collection.dart';
 import 'package:union_shop/collection_product_page.dart';
+import 'package:union_shop/product_page.dart';
 import 'package:union_shop/logic/cart.dart';
 import 'package:union_shop/logic/realtime_database.dart';
 
@@ -60,6 +61,15 @@ class UnionShopApp extends StatelessWidget {
           final itemType = settings.name!.split('/').last;
           return MaterialPageRoute(
             builder: (context) => CollectionProductPage(itemType: itemType),
+            settings: settings,
+          );
+        }
+
+        // Handle product pages: /product/item-title
+        if (settings.name?.startsWith('/product/') == true) {
+          final productTitle = settings.name!.substring(9);
+          return MaterialPageRoute(
+            builder: (context) => ProductPage(title: productTitle),
             settings: settings,
           );
         }
