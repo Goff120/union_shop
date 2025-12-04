@@ -67,5 +67,18 @@ void main() {
       expect(cartItem.getTotalPrice(), 77.97);
     });
 
+    test('CartItem getTotalPrice handles invalid price', () {
+      final cartItem = CartItem(
+        imageUrl: 'test-image.jpg',
+        name: 'Test Product',
+        price: 'invalid',
+        quantity: 2,
+        colour: 'Green',
+        size: 'S',
+      );
+
+      expect(cartItem.getTotalPrice(), 0.0);
+    });
+
   });
 }
