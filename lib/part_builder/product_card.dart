@@ -28,9 +28,7 @@ class ProductCard extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => ProductPage(
               title: title,
-              price: price,
-              image: image,
-              discp: discp,
+
             ),
           ),
         );
