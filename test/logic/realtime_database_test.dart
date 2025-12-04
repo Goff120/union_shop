@@ -87,6 +87,83 @@ void main() {
       mockSnapshot = MockDataSnapshot();
     });
 
+    group('getItemsByCategory Tests', () {
+      test('returns empty list when snapshot does not exist', () async {
+        when(mockSnapshot.exists).thenReturn(false);
+        when(mockDatabaseRef.child('items/socks')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        // We need to test the actual implementation, so we'll create a testable version
+        // This test verifies the behavior when no data exists
+        final result = await _getItemsByCategoryWithMock(mockDatabaseRef, 'socks');
+        expect(result, isEmpty);
+      });
+
+      test('returns list of items when data exists', () async {
+        final mockData = [
+          {
+            'title': 'Rainbow Socks',
+            'price': '£9.00',
+            'image': 'assets/images/sock2.jpeg',
+            'discp': 'Colorful rainbow socks',
+            'newprice': 'F'
+          },
+          {
+            'title': 'Striped Socks',
+            'price': '£7.50',
+            'image': 'assets/images/socks1.jpeg',
+            'discp': 'Classic striped socks',
+            'newprice': 'F'
+          }
+        ];
+
+        when(mockSnapshot.exists).thenReturn(true);
+        when(mockSnapshot.value).thenReturn(mockData);
+        when(mockDatabaseRef.child('items/socks')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        final result = await _getItemsByCategoryWithMock(mockDatabaseRef, 'socks');
+        
+        expect(result, hasLength(2));
+        expect(result[0].title, 'Rainbow Socks');
+        expect(result[0].category, 'socks');
+        expect(result[1].title, 'Striped Socks');
+        expect(result[1].category, 'socks');
+      });
+
+      test('handles null items in list', () async {
+        final mockData = [
+          {
+            'title': 'Valid Item',
+            'price': '£10.00',
+            'image': 'test.jpg',
+            'discp': 'Valid item description',
+            'newprice': 'F'
+          },
+          null, // null item should be skipped
+          {
+            'title': 'Another Valid Item',
+            'price': '£15.00',
+            'image': 'test2.jpg',
+            'discp': 'Another valid item',
+            'newprice': 'F'
+          }
+        ];
+
+        when(mockSnapshot.exists).thenReturn(true);
+        when(mockSnapshot.value).thenReturn(mockData);
+        when(mockDatabaseRef.child('items/test')).thenReturn(mockDatabaseRef);
+        when(mockDatabaseRef.get()).thenAnswer((_) async => mockSnapshot);
+
+        final result = await _getItemsByCategoryWithMock(mockDatabaseRef, 'test');
+        
+        expect(result, hasLength(2)); // Should skip null item
+        expect(result[0].title, 'Valid Item');
+        expect(result[1].title, 'Another Valid Item');
+      });
+    });
+
+
 }
 
 
