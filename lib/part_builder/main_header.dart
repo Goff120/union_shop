@@ -58,7 +58,7 @@ class MainHeader extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8),
             color: const Color(0xFF4d2963),
             child: const Text(
-              'The one peace! The one peace is REAL!!',
+              'get 20% off at the great winter sale',
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
