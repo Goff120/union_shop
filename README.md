@@ -116,6 +116,16 @@ test/                         # Unit and widget tests
 ├── pages/                   # Tests for page components
 └── part_builder/            # Tests for UI components
 ```
+## Database Structure 📊
+
+items
+└── Group
+    └── item ID
+         ├── title (String)
+         ├── price (String) 
+         ├── image (String)
+         ├── discp (String)
+         └── newprice (String)
 
 ## Technologies Used 🛠️
 
