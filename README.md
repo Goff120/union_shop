@@ -66,18 +66,6 @@ cd union_shop
 
 ## Usage Instructions 📱
 
-### Running Tests
-
-```bash
-# Run all tests
-flutter test
-
-# Run tests with coverage
-flutter test --coverage
-
-# View coverage report
-genhtml coverage/lcov.info -o coverage/html
-```
 
 ### Configuration Options
 
